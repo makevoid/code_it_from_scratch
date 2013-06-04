@@ -1,0 +1,519 @@
+rubydayit_2013_code_it_from_scratch_talk
+========================================
+
+home
+----
+
+rubyday
+
+
+learn javascript
+use underscore.js (ruby constructs) and coffeescript (ruby syntax)
+
+
+ruby for mobiles 
+
+ios -> rubymotion / mobiruby (mruby)
+android -> mirah
+html5 -> appcache / installable app / phonegap / firefox os 
+
+
+code what you need
+put it open source
+
+another person comes by
+forks the project
+makes his own modifications -> uses it
+sees something useful for others
+sends you patches / builds a new version (and maybe pull from you)
+
+
+future:
+
+javascript driven apps
+stream only json
+html5 apps on devices
+schema.org (descriptive tags new rdf?)
+webgl
+
+
+----
+
+ruby coding from scratch
+
+at some point you need a library / etc
+• because you are lazy
+• because you need to release early
+• and you know the library works well and is well maintained
+• etc
+
+so, here are some things to watch out when you choose a library
+
+STABILITY
+
+UPGRADABILITY
+
+SPEED
+require time
+• testing
+note [eye icon]: not many monkeypatches - lots of them can slow testing time (lots of monkeypatches can be) [consider "fixing" the library with refinements]
+
+
+
+Feedback loop is key
+
+use aliases
+
+use scripts to speed up your workflow (aliases, Procfile, guard, rerun)
+
+
+split monitor - use hotkeys to switch fom your editor / browser / terminal
+
+
+Don't use VMs
+
+build a script that setups the environment
+
+
+don't use chef
+a sh script is better for starting
+
+there's really not a good default for everything 
+your custom configs can be better
+an sh/ruby script is easier to edit that anything else
+(if you structure it well)
+
+
+-- 
+
+if you use a library and you have a bug (especially if it's only on one env and not on all)
+
+you don't know if it/s your code fault or the one written in the library
+you have to go inside the library code to check for the bug
+
+====
+
+if you write code that you can extract to your own library
+then other people may find it and use it and you can become a maintainer
+
+
+
+-----
+
+
+
+  # put in talk:
+
+  #   - start different classes for different objects (at cost of duplicating your code) then join them trough relations
+  #   - iterators compared -> java / php / ruby / underscore.js
+
+  # ---- [way to code] -  live coding
+
+  # think of a functionality
+
+  # start from a blank ruby file
+
+  # name methods
+
+  # implement them
+
+  # refactor using classes / etc
+
+
+
+  # ideas to implement
+
+  # live coding is awesome
+
+  # live coding screencasts (peepcode / destroyallsoftware .. etc)
+
+  # imagine if there's  an editor that saves all edits, and replays them, that are only like diffs (like git)
+
+
+----
+
+code it from scratch
+
+data attributes
+
+
+img = document.querySelector("img.antani")
+
+Q = document.querySelector
+$ = document.querySelector
+
+
+img = $("img.antani")
+img = Q("img.antani") // use specific tags in your js (especially if a specific tag like an img/audio/video/section/span/caption...)
+
+// jquery
+img.data("id")
+
+
+// wouldn't be better if it was
+img.data,id     // ?
+
+
+// well in js is really like this
+img.dataSet.id
+
+// oh but if you use jquery you need a 
+
+//
+
+
+// so again, do it from scratch people!!
+
+// especially if it's your boss paying for your code time!
+
+// use the fucking time to learn! and not to learn to use a library well, but to build something simple and useful where it's needed
+
+// i'm not saying NO to every libs, I just say
+
+// think about it.... this part is better coded from scratch!!
+
+// prototyping // dealing with change // "lean" // "agile" // insert buzzword here! // from a fucking blank editor!  you know?  
+img.dataset.id
+
+------------
+
+write methods you are going to implement
+
+don't impelement and then use the methods
+
+it's seems fucking stupid but think about it
+
+a complete area of your brain makes analysis, your prefrontal cortex, then you have a creative part, located on the back sides of your head  
+
+there is a cost in switching between analytic and creative (intuition) mode, you should should maximize the two phases, I think
+
+so, again, code it from the fucking
+
+----
+
+use pseudo-code
+
+use pseudo-code
+
+use pseudo-code
+
+use pseudo-code
+
+use pseudo-code
+
+
+create, then implement
+
+-----
+
+create your own master branch and commit bugs to it
+
+-- so you can always be at your last creative phase, even if you broke something
+
+
+
+-----
+
+do live coding, pair programming, build prototypes together
+
+think about an idea and try to make it (a prototype) on the same day
+
+
+-----
+
+example of progressive refactoring // modulization // from script to oo
+
+
+nothing
+
+----
+
+// code that does something
+
+---
+
+Net::HTTP.get_response "http://example.com"
+
+---
+
+def get_example
+  Net::HTTP.get_response "http://example.com"
+end
+
+get_example()
+
+----
+
+
+in a class
+
+class Antani
+  # long list of methods
+
+        
+	def get_example
+  		Net::HTTP.get_response "http://example.com"
+	end
+
+        def parse_example
+               example = get_example
+               example.gsub(/example/, 'EXAMPLE') 
+        end
+
+
+-- or ---
+
+class Antani
+	# long list of methods
+
+        
+	def get_example
+  		@example = Net::HTTP.get_response "http://example.com"
+	end
+
+        def parse_example
+               @example.gsub(/example/, 'EXAMPLE') 
+        end
+
+-----
+
+class Antani
+
+	include Example
+
+
+module Example
+
+	def get_example
+             ...
+
+        def parse example
+             ....
+
+--------
+
+when you don't have rails
+
+you don't have autoload / autoreload
+
+-------
+
+autoload: -> require + Dir.glob
+
+def require_all(dir)
+  Dir.glob("#{dir}/*.rb").each do |file|
+    require file
+
+--------
+
+autoreload
+
+ctrl+C 
+
+rerun
+
+guard-reload
+
+hotkeys (osx / linux)
+
+-------------
+
+upgrading!!!
+
+easier
+can be more modular
+
+
+
+-----
+
+for sysadmin i suggested the sh way to some programmer friends, i showed them a bit of setup code and told them to share their, and it worked very well 
+
+-------------
+
+if your [test env/setup] is slow, you are developing at turtle speed
+---
+
+
+machine setup: (for your next machine / test deviece / designer machine / coworker ones [especially for remote coworkers])
+
+should be fast
+scripted / you have notes / you remember it well
+
+----
+don't use remote machines or vms to check (these are ok for production), this (at least in the cases i saw) slows down your development process
+
+---
+
+there are a lot of functions in stdlib
+
+
+---
+
+ruby
+
+use net http from scratch
+[example]
+
+
+css sass
+
+don't use compass
+               boilerplate (reset what you care about)
+
+
+
+
+use
+
+
+---
+
+IMPORTANT: MAKE YOUR CODE EASY TO READ (in the frontend world) means also  MAKE YOUR HTML/CSS Easy to read
+
+awesome for open source, 
+
+remember when you started with building web sites/apps (and what you do mostly do to evaluate them?)
+
+you open the site/app and click around, play with it
+and next,  yes -> View source
+
+[and that is exactly what makes me mad about not being able to do it on desktop/mobile(ios/android) apps]
+
+that's why i love web technologies (html5/js etc) and even if we have a big elder brother that is very slow (yeah i'm talking about W3C)
+
+I like standards, especially if they're easy, to give the possibility to anyone to create things, and maybe become more of a programmer or designer
+
+we have the ability to make, it's inside our human nature, we can make things that can change the world, 
+
+
+----
+
+[parallel but not the best fit]
+fits more on a talk on: bootstrap your own product
+
+gaming: Ultima Online, you start naked, no money
+
+you have to eat or you'll die
+
+can cultivate plants/ hunt for food
+
+can beg money
+can craft weapons / armors
+mine rocks
+cultivate plants
+harvest wood
+woodcraft
+make fences and houses
+hunt
+fight
+
+
+npcs / monsters / other players
+
+
+
+
+
+lesson: you can create things based on your skills and make a living out of it
+
+self: you can't spend anything, you can't 
+
+---
+
+if you use compilers (especially html and css) make sure they output a good code
+or make your sources public (repository/put them in the same public directory and "link" to them with a comment <!-- --> // ) 
+
+----
+
+use guard
+to automate your workflow / coding sessions
+
+[all guards available list] (github search)
+
+guard-coffeescript
+guard-sass
+guard-livereload
+guard-concat
+
+
+------
+underscore js
+
+dont use it like shown in the examples :D
+
+----
+
+_([array]).map ... -> ...
+
+not
+
+_.map([array], ->)
+
+:)
+
+because so you can refactor as
+
+var array = _([array])
+
+and you can do
+
+array.map(....
+
+-------
+
+things to say at the end [about coding it from scratch]
+
+I've gone / I'm pushing it  to the extreme just to see when it's useful and when it's not
+
+see where is your limit
+
+try to go beyond that and to see if you benefit from it
+
+-------
+
+to see wich library/technology to try and how to try it
+
+search the library author name
+find a talk about his library
+
+example:
+
+rubyJS vs opalrb (sorry xxx)
+
+not compiled - see video: http://www.ustream.tv/recorded/33526011
+
+21kb gzipped
+
+very precise mad man (not just the average programmer)
+
+-------------
+
+when you find new library and you want to try it
+
+start with the simple possible example
+
+pick the library, have it in one file
+
+have your main "play" file in another and require it
+
+start playing
+
+
+
+-----
+
+for sites / clientside apps
+
+start with an empty index.html
+
+open it in your browser
+
+when you need to host it use something like
+
+python SimpleHTTP server
+
+then maybe move to sinatra 
+
+then maybe move to rails (the total code weight will increase drastically in this phase)
+--- then tear down some defaults (you usually don't need all actioncontroller - also see one file rails app and one file rails app and the talk by jose - railsnatra)
