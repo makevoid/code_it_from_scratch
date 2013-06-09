@@ -12,10 +12,21 @@ button {
 }
 </style>
 
+<button class="prev">&lt;</button>
+<button class="next">&gt;</button>
+
+<script src="/utils.js"></script>
 <script>
 var prev_btn = document.querySelector(".prev")
 var next_btn = document.querySelector(".next")
-</script>
 
-<button class="prev">&lt;</button>
-<button class="next">&gt;</button>
+var notify_server = function(){
+  console.log("ue")
+  request = new XMLHttpRequest()
+  request.post("/stream", "direction=next")
+}
+
+prev_btn.addEventListener("click", notify_server)
+next_btn.addEventListener("click", notify_server)
+
+</script>

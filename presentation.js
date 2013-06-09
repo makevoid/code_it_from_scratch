@@ -1,33 +1,4 @@
 
-// utils
-
-XMLHttpRequest.prototype.get = function(url){
-  this.open('GET', url, true)
-  this.send(null)
-}
-
-XMLHttpRequest.prototype.post = function(url, params){
-  this.open('POST', url, true)
-  this.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-  this.send(params)
-}
-
-XMLHttpRequest.prototype.success = function(callback) {
-  return function(){ 
-    if (request.readyState == 4) { 
-      // TODO maybe: request.status === 200
-      callback()
-    }
-  }
-}
-
-XMLHttpRequest.prototype.on_success = function(callback) {
-  this.onreadystatechange = this.success(callback)
-}
-
-
-// main
-
 var presentation = {
   slides_elem: document.querySelector(".slides"),
   slides: [],
@@ -73,32 +44,13 @@ var handle_keyboard = function(evt) {
 
 window.addEventListener("keydown", handle_keyboard)
 
-// TODO: history.state + websocket presenter notes + arrows
-
+// TODO: history.state
 
 var source = new EventSource('/stream')
 source.onmessage = function (event) {
-  console.log(event.data)
+  if (event.data == "next")
+    presentation.next()
+    
+  if (event.data == "prev")
+    presentation.prev()
 }
-
-request2 = new XMLHttpRequest()
-request2.post("/stream", "direction=next")
-
-
-
-// class EventSource
-//   include EM::Deferrable
-// 
-//   def send(data, id = nil)
-//     data.each_line do |line|
-//       line = "data: #{line.strip}\n"
-//       @body_callback.call line
-//     end
-//     @body_callback.call "id: #{id}\n" if id
-//     @body_callback.call "\n"
-//   end
-// 
-//   def each(&blk)
-//     @body_callback = blk
-//   end
-// end
