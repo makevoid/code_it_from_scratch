@@ -9,5 +9,10 @@ RubyDay 2013
 
 code
 
+:: notes: these are presenter notes
+:: layout it's just a class
 
+[layout mini] 
+[font thaoma]
+[color red]
 ---

@@ -426,6 +426,26 @@ you feel more in control
 
 things are usually faster, you can optimize it more
 
+---
+
+sometimes you have an idea:
+
+"I need a tool that does X"
+
+you have 2 options:
+
+- search if there's a library that already does that
+- code it yourself
+
+when you are starting usually you don't have the idea of how the implementation it will going to be
+if it's easy to do it, do it
+if you search around and see others people products/implementations you may be deviated by what you really need and what you really can do 
+inspiration is ok
+but the "blank mind" let you express yourself freely
+not looking at other people solutions you can go where others are not arrived
+
+programming is creative, don't do only code assembly, go beyond that, create! :D 
+
 
 ---
 
@@ -1026,6 +1046,10 @@ img.dataSet.id
 
 // prototyping // dealing with change // "lean" // "agile" // insert buzzword here! // from a fucking blank editor!  you know?  
 img.dataset.id
+
+
+other examples: (append/prepend etc)
+http://www.leebrimelow.com/native-methods-jquery/
 
 ------------
 
