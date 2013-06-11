@@ -1,0 +1,50 @@
+
+commit messages: 
+
+be creative! implemented x because it's awesome
+fixing again, it's the 100th time, i think it's time to change y
+
+---
+
+[parallel but not the best fit]
+fits more on a talk on: bootstrap your own product
+
+gaming: Ultima Online, you start naked, no money
+
+you have to eat or you'll die
+
+can cultivate plants/ hunt for food
+
+can beg money
+can craft weapons / armors
+mine rocks
+cultivate plants
+harvest wood
+woodcraft
+make fences and houses
+hunt
+fight
+
+
+npcs / monsters / other players
+
+
+
+
+
+lesson: you can create things based on your skills and make a living out of it
+
+self: you can't spend anything, you can't
+
+
+---
+
+example:
+
+rubyJS vs opalrb (sorry xxx)
+
+not compiled - see video: http://www.ustream.tv/recorded/33526011
+
+21kb gzipped
+
+very precise mad man (not just the average programmer)
