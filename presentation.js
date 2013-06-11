@@ -1,3 +1,31 @@
+// textism
+
+var textism = function(string) {
+
+  var parse_notes_and_styles = function(string) {
+    object = {}
+    object.text = string
+    object.notes = "notes"
+    object.layout = null
+    return object
+  }
+  
+  var parse_code_blocks = function(str) {
+    str = str.replace(/```(\w+)\s*\n/g, "<pre><code data-language='$1'>")
+    str = str.replace(/```/g, "</code></pre>")
+    return str
+  }
+  
+  string = parse_code_blocks(string)
+  string = textile(string)
+  
+  var object = parse_notes_and_styles(string)
+  
+  return object
+}
+
+
+// main
 
 var presentation = {
   slides_elem: document.querySelector(".slides"),
@@ -21,10 +49,11 @@ presentation.load = function(slides) {
 
 presentation.load_slide = function(idx) {
   var content = this.slides[idx]
-  content = textile(content)
-  this.slides_elem.innerHTML = content
+  content = textism(content)
+  this.slides_elem.innerHTML = content.text
   this.idx = idx
   location.hash = idx
+  Rainbow.color()
 }
 
 presentation.prev = function() {

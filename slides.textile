@@ -5,7 +5,9 @@ RubyDay 2013
 
 @makevoid
 
-> notes: create wifi, connect ipad and test
+
+> notes: create wifi, connect ipad and test buttons/notes
+> deactivate moz fb plugin, put in fullscreen, open display preferences, close every other software, open quicktime and start recording (file > new screen recording)
 
 ---
 
@@ -16,7 +18,7 @@ who am I?
 
 Ruby developer
 
-I (heart) 3D printing
+Lately I discovered that I &#9825; 3D printing
 
 > Lately I'm becoming interested in 3d printing (code that become real things), but I'm a newbie, so If you know a lot about that, come and talk to me
 
@@ -38,6 +40,10 @@ rails new appname
 
 > and maybe it was only for a static site, for a json API, or for a clientside app?
 
+> maybe you have seen the rails build blog in 15 minutes screencast a lot of times
+
+> have you thought, maybe it's not the best or the fastest to start an app, or start playing with some code
+
 > or... have you ever seen this?
 
 [bg black]
@@ -47,19 +53,32 @@ rails new appname
 
 $ rake test
 
-[bg black]
-[colour green]
+[terminal]
 ---
 
 $ rake test
-.|.|.|.|.|.|.|.|.....
-(js animation)
+..
 
-[bg black]
-[colour green]
+[terminal]
+---
 
-> or maybe this:
+$ rake test
+.....
 
+[terminal]
+---
+
+$ rake test
+.........
+
+[terminal]
+---
+
+$ rake test
+...............
+
+> or maybe you started a fresh app:
+[terminal]
 ---
 
 (freshly created app)
@@ -73,14 +92,41 @@ irb(main):001:0>
 
 ---
 
-after adding 10+ gems
+
+... adding 10+ gems ...
+
+---
+
+
 
 $ rails console
 
-..... 15 secs ...
+---
+
+
+$ rails console
+
+(...)
+
+---
+
+
+$ rails console
+
+... after 15 secs ...
 
 irb(main):001:0>
 
+---
+
+
+$ rails console
+
+... after 15 secs ...
+
+irb(main):001:0>
+
+WTF!!!
 
 ---
 
@@ -96,13 +142,27 @@ Coding it from scratch!
 
 ---
 
-problems:
+] problems:
 
+- when you are starting, the less you have the better!
 - library you require and their dependencies are code that you don't control directly
-- it can be complex
-- buggy
-- slow 
-- ...
+  - it can be complex
+  - can have bugs
+  - can slow your app down 
+  
+---
+
+
+Did you...
+
+- wait for minutes for a test suite to finish
+- discovered a feature you need in library "x" is not implemented
+- hit bugs in the library x and realized it's gazillion lines of long messy code?
+- spent more time in searching documentation than 
+
+so for the next project consider coding it from scratch!
+
+[note: there will be some slides full of code, and links, so if you are interested you may follow along with bit.ly/codeifs ]  
 
 ---
 
@@ -111,6 +171,7 @@ solution:
 go back to ruby
 
 > start both from only basic ruby 
+
 > or/and from the frontend, yes, i'm talking about a plain html file
 
 > at first do only the things you need the most, your app's core
@@ -119,21 +180,13 @@ go back to ruby
 
 ---
 
-- start small in:
+START small in:
 
-- ruby
-- css
-- js
+- Ruby
+- CSS
+- JS
 
 > this is only a 30min talk, I can't show you everything but some of the benefits of starting small and going on
-
-
----
-
-...
-
----
-
 
 
 ---
@@ -147,15 +200,25 @@ go back to ruby
 
 ---
 
+[todo don't do rails new]
+
 &#9995;
 
 > don't do this:
+
+# in rails
 
 class Post < ActiveRecord::Base
 
 end
 
 > the moment you do that your code is not small anymore!
+
+
+---
+
+start from sinatra > transform into rails if you need
+
 
 ---
 
@@ -166,7 +229,7 @@ end
 
 ---
 
-
+```ruby
 class Post
   attr_accessor :title
   attr_accessor :content
@@ -176,15 +239,22 @@ class Post
     @content  = attrs[:content]
   end
 end
+```
 
-post = Post.new title: "ruby", content: "when it's plain, it's powerful"
+---
+
+```ruby
+post = Post.new( title: "ruby", 
+  content: "when it's plain, it's powerful" )
 post.title #=> "ruby"
+```
 
 > this may seem too basic, but believe me, it's convenient!
 > and you can easily go beyond that!
 
+> NEXT: for a model library:
 
-> for a model library:
+---
 
 datas == array of hashes
 
@@ -201,27 +271,41 @@ people = [{ #person1
 
 --- 
 
-# in ruby
+in ruby:
 
+```ruby
 [
   { name: "mario", age: 28 }, 
-  { name: "luigi", age: 32 },   
+  { name: "luigi", age: 32 },
+  # ...   
 ]
+```
 
 --- 
 
-// or in json
+or in json:
 
+```javascript
 [
   { "name": "mario", "age": 28 }, 
   { "name": "luigi", "age": 32 }
+  // ...
 ]
+```
 
 you can use eval (it's evil only in production, in development can be time saving)
 
+```ruby
+def load_posts(user_id)
+  { # ... }
+end
+
 [
-  { id: 1, name: "mario", age: 28, posts: load_posts(1) }
+  { id: 1, name: "mario", age: 28, 
+    posts: load_posts(1) 
+  }
 ].sort_by{ #... }
+```
 
 when developing, write your data in a file, so you don't need to query a database, you can just open that file
 
@@ -246,42 +330,75 @@ good seeds
 
 scale later
 
-> you can always scale later
+> you can always scale later to a more production-ready solution, but your development time and process is the key
 
 ---
 
 data is code, code is data
 
+
+---
+
+
 data > write to file
+
+```ruby
+objects = [{}, {}]
+
+File.open("./db/data.rb", "w") do |f|
+  f.write objects
+end
+```
+
+> your collection of objects can be easily wrote to file
+
+---
 
 read file > eval contents > data!
 
 
+```ruby
+objects = File.read "./db/data.rb"
+
+puts objects #=> [{}, {}]
+```
+
+> ..and you can simply retrieve them with an eval (of course you can use yaml/json/redis/pstore if you prefer)
+
 ---
 
 
-it's easy to dynamically load datas and modify your objects
+you can dynamically load datas and modify your objects with few lines
+
+attr_accessor and instance_variable_set are your friends!
 
 ---
 
-  key = :antani
-  instance_variable_set "@#{key}", val
 
-  # at class level
-  attr_accessor key
+```ruby
+key = :antani
+instance_variable_set "@#{key}", val
+
+# at class level
+attr_accessor key
+```
+
+---
 
 
-  # how to get to class level?
-  
-  def self.included(mod)
-    mod.send :extend, ClassMethods
+```ruby
+# how to get to class level?
+
+def self.included(mod)
+  mod.send :extend, ClassMethods
+end
+
+module ClassMethods
+  def create_accessor(name)
+    attr_accessor name
   end
-
-  module ClassMethods
-    def create_accessor(name)
-      attr_accessor name
-    end
-  end
+end
+```
 
 
 without method missing
@@ -290,38 +407,46 @@ without instance/class eval
 [those are not very clear, isn't it?]
 
 
---
+---
 
 then of course you can use it
 
-    hash = { title: "test", contents: "bla" }
-    page = Page.load hash
-    
-    page.title #=> "test"
-    page.contents #=> "bla"
-    
-    
-    
-with relations:
 
-first embed:
+```ruby
+hash = { title: "test", contents: "bla" }
+page = Page.load hash
 
-    post_hash = { title: "test", comments: ["bla", "asd", "lol"] }
+page.title #=> "test"
+page.contents #=> "bla"
+```    
+    
+    
+with nested embedded objects:
+
+```ruby
+post_hash = { 
+  title: "test", 
+  comments: ["bla", "asd", "lol"] 
+}
+```
     
 (simple)
 
+---
+
 more complex:
 
-  post_hash = { 
-    title: "test", 
-    comments: [
-      { id: 1, text: "bla", user_id: 1 },
-      { id: 2, text: "asd", user_id: 2 },
-      { id: 3, text: "lol", user_id: 1 },
-      #...
-    ]
-  }
-
+```ruby
+post_hash = { 
+  title: "test", 
+  comments: [
+    { id: 1, text: "bla", user_id: 1 },
+    { id: 2, text: "asd", user_id: 2 },
+    { id: 3, text: "lol", user_id: 1 },
+    #...
+  ]
+}
+```
 
 
 go crazy and find your own way!
@@ -335,104 +460,130 @@ then you want to use activerecord? easy, your external api looks already like th
   
 or use ActiveModel?/ YAML::Store / PStore (stdlib) /Virtus (datamapper2/ROM)
 
--------
+---
 
-ruby
+
+h1. ruby
 
 use net http from scratch
 [example]
 
+```ruby
 example = Net::HTTP.get_response "http://example.com"
 puts example #=> "example!"
+```
 
 > always run it and see the output!
 
 ---
 
+```ruby
 def get_example
   Net::HTTP.get_response "http://example.com"
 end
 
 get_example()
+```
 
-----
+---
 
 
-in a class
+in a class:
 
+
+```ruby
 class Antani
   # long list of methods
 
-	def get_example
-		Net::HTTP.get_response "http://example.com"
-	end
+  def get_example
+    Net::HTTP.get_response "http://example.com"
+  end
 
   def parse_example
     example = get_example
     example.gsub(/example/, 'EXAMPLE') 
   end
+end
+```
 
 
--- or ---
+---
 
+or:
+
+```ruby
 class Antani
-	# long list of methods
+  # long list of methods
 
-        
-	def get_example
+  def get_example
     @example = Net::HTTP.get_response "http://example.com"
-	end
+  end
 
   def parse_example
      @example.gsub(/example/, 'EXAMPLE') 
   end
+end
+```
 
------
+---
 
+```ruby
 class Antani
 
-	include Example
+  include Example
 
 
 module Example
 
-	def get_example
-             ...
+  def get_example
+    # ...
 
-        def parse example
-             ....
+  def parse example
+    # ....
+```
 
---------
+(pseudo code)
+
+---
 
 when you don't have rails
 
 you don't have autoload / autoreload
 
--------
+---
 
-autoload: -> require + Dir.glob
+simple autoload -> require + Dir.glob
 
+```ruby
 def require_all(dir)
   Dir.glob("#{dir}/*.rb").each do |file|
     require file
+  end
+end
 
---------
+require_all "models"
+```
+
+---
 
 autoreload
 
-ctrl+C 
+ctrl+C + up arrow + enter &#x1F600;
 
-rerun
+rerun [link]
 
-guard-reload
+guard-reload [link]
 
-> if your [test env/setup] is slow, you are developing at turtle speed &#x1F422;
+> if your [dev env/setup] is slow, you are developing at turtle speed &#x1F422;
 
+> your integration tests will be automatically slow because they will require your environment
 
 hotkeys (osx / linux)
+- fastscripts
+- ???? forgot the name
 
 
--------------
+---
 
 use pseudo-code
 
@@ -510,6 +661,158 @@ end
 - models / DDD
 
 > models: stated before
+
+---
+
+---
+
+JS
+
+build your own:
+  - click events
+  - image gallery
+  - autocomplete
+  - infinite page scrolling
+  - manage history state (push/pop)State yourself
+  - please don't use pjax / fast-rails-hack-ajax-speed-reload-antani?
+  - 
+  
+also don't use ; they are optional! (except when you use the wrapping namespace () ) - (function(){ }) 
+
+use zepto instead of jquery - if you don't plan to support ie 8
+
+---
+
+click event example:
+
+```javascript
+// with jquery/zepto
+
+$("a.clickable").on("click", function(evt){
+  console.log("clicked")
+  evt.preventDefault()
+})
+```
+
+---
+
+```javascript
+// that becomes:
+
+var link = $("a.clickable")
+link.on("click", function(evt){
+  console.log("clicked")
+  evt.preventDefault()
+})
+```
+
+---
+
+```javascript
+// and finally:
+
+var link = $("a.clickable")
+var handle_click = function(evt){
+  console.log("clicked")
+  evt.preventDefault()
+}
+link.on("click", handle_click)
+```
+
+---
+
+```javascript
+// plain js
+
+var link = document.querySelector("a.clickable")
+var handle_click = function(evt){
+  console.log("clicked")
+  evt.preventDefault()
+}
+link.addEventListener("onclick", handle_click)
+```
+
+not that hard isn't it?
+
+---
+
+
+querySelector
+
+```javascript
+img = document.querySelector("img.antani")
+
+Q = document.querySelector
+( QA = document.querySelectorAll )
+$ = document.querySelector
+```
+
+---
+
+```javascript
+img = $("img.antani")
+img = Q("img.antani") 
+```
+
+tip: use specific tags in your js (especially if a specific tag like an img/audio/video/section/span/caption...)
+
+
+otherwise you always have to do get(0) to get to the real element
+
+
+---
+
+
+data attributes
+
+```javascript
+// jquery
+img.data("id")
+```
+
+---
+
+```javascript
+// wouldn't be better if it was
+img.data.id  // ?
+```
+
+---
+
+```javascript
+// well in js is really like this
+img.dataSet.id
+```
+
+oh but if you use jquery you need  ("") 
+
+
+----
+
+also for classes (addClass/reomveClass)
+and for appending/prepending to the dom
+innerHTML += / insertBefore / appendElement
+
+---
+
+// so again, do it from scratch people!!
+
+
+
+// especially if it's your boss paying for your code time!
+
+// use the fucking time to learn! and not to learn to use a library well, but to build something simple and useful where it's needed
+
+// i'm not saying NO to every libs, I just say
+
+// think about it.... this part is better coded from scratch!!
+
+// prototyping // dealing with change // "lean" // "agile" // insert buzzword here! // from a fucking blank editor!  you know?  
+img.dataset.id
+
+
+other examples: 
+http://www.leebrimelow.com/native-methods-jquery/
 
 ---
 
@@ -600,6 +903,64 @@ find a talk about his library
 
 ---
 
+CIY (Code it Yourself)
+
+like DIY for things, if it's cheaper
+in the end you will learn something new
+or if you already know those things (let's say you need a pagination library) you can do it for exercise
+to try a new TDD/BDD/etc way of coding
+to train yourself
+
+[warning: I'm not saying that you should rebuild EVERYTHING, that could be "a little" time consuming :)]
+so don't rebuild rails if you need every part of it
+
+instead, if you code something, and you see it's [simpler / solves the problem better / it has a feature that other libs don't / has a better api]
+release that code as a library
+
+- reuse it in other projects
+- let other people use it, open source it
+-- if people ask for features
+-- tell people to fork it and implement those themselves
+
+
+---
+
+i'm not saying it's easy, especially with a big and "already running in production" project, but! you surely have another 
+
+so, before you add x^n dependencies, consider to code it from a blank environment
+
+
+
+---
+
+important:
+
+coding from scratch keep your programmer memory fresh
+less cut n paste
+you need to produce
+more modular code
+more targeted code
+
+less: use this or that library, hammer 2-3 things here and there and go
+you are more forced to think about the problem and about the language / apis you have
+before using an external library think: do I really need it?
+doing this will I save time in the end?
+
+---
+
+reach the MVP (minimal viable product)
+MVD (minimal viable demo)
+then iterate on that
+
+---
+
+prefer small iterations over big upfront overstructured designs
+
+follow the "flow"
+
+
+---
+
 code
 
 :: notes: these are presenter notes
@@ -608,8 +969,6 @@ code
 [layout mini] 
 [font thaoma]
 [color red]
-
-
 ---
 
 Thanks!

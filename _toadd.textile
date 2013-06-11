@@ -8,25 +8,6 @@
 5min questions
 
 
----
-
-
-Did you...
-
-- wait for minutes for a test suite to finish
-- discovered a feature you need in library "x" is not implemented
-- hit bugs in the library x and realized it's gazillion lines of long messy code?
-- spent more time in searching documentation than 
-
-so for the next project consider
-
-
-[note: there will be some slides full of code, so if you are interested you may follow along with bit.ly/codeifs ]
-
-
-----
-----
-
 london:
 ---
 
@@ -40,60 +21,6 @@ start from a blank file
 
 ---
 
-CIY (Code it Yourself)
-
-like DIY for things, if it's cheaper
-in the end you will learn something new
-or if you already know those things (let's say you need a pagination library) you can do it for exercise
-to try a new TDD/BDD/etc way of coding
-to train yourself
-
-[warning: I'm not saying that you should rebuild EVERYTHING, that could be "a little" time consuming :)]
-so don't rebuild rails if you need every part of it
-
-instead, if you code something, and you see it's [simpler / solves the problem better / it has a feature that other libs don't / has a better api]
-release that code as a library
-
-- reuse it in other projects
-- let other people use it, open source it
--- if people ask for features
--- tell people to fork it and implement those themselves
-
-
----
-
-i'm not saying it's easy, especially with a big and "already running in production" project, but! you surely have another 
-
-so, before you add x^n dependencies, consider to code it from a blank environment
-
-
-
----
-
-important:
-
-coding from scratch keep your programmer memory fresh
-less cut n paste
-you need to produce
-more modular code
-more targeted code
-
-less: use this or that library, hammer 2-3 things here and there and go
-you are more forced to think about the problem and about the language / apis you have
-before using an external library think: do I really need it?
-doing this will I save time in the end?
-
----
-
-reach the MVP (minimal viable product)
-MVD (minimal viable demo)
-then iterate on that
-
----
-
-prefer small iterations over big upfront overstructured designs
-
-follow the "flow"
 
 ---
 
@@ -229,63 +156,7 @@ cuuuustooooom foooormaaats!!!
 
 (saf, textile/markdown + extensions [github flavored markdown, it's just a pre/post parser] , pre-parsed sass for themed variables ..., write code that writes code :) ) 
 
----
 
-JS
-
-build your own:
-  - click events
-  - image gallery
-  - autocomplete
-  - infinite page scrolling
-  - manage history state (push/pop)State yourself
-  - please don't use pjax / fast-rails-hack-ajax-speed-reload-antani?
-  - 
-  
-also don't use ; they are optional! (except when you use the wrapping namespace () ) - (function(){ }) 
-
-use zepto instead of jquery - if you don't plan to support ie 8
-
-click event example:
-
-  // with jquery/zepto
-
-  $("a.clickable").on("click", function(evt){
-    console.log("clicked")
-    evt.preventDefault()
-  })
-  
-  // that becomes:
-  
-  var link = $("a.clickable")
-  link.on("click", function(evt){
-    console.log("clicked")
-    evt.preventDefault()
-  })
-  
-  // and finally:
-
-  var link = $("a.clickable")
-  var handle_click = function(evt){
-    console.log("clicked")
-    evt.preventDefault()
-  }
-  link.on("click", handle_click)
-
-  // plain js
-
-  var link = document.querySelector("a.clickable")
-  var handle_click = function(evt){
-    console.log("clicked")
-    evt.preventDefault()
-  }
-  link.addEventListener("onclick", handle_click)
-
-
-not that hard isn't it?
-
-
----
 
 pros:
 
@@ -549,7 +420,7 @@ you want to do android? Mirah  / mruby
 
 
 
-----
+---
 action
 
 build an app with sinatra
@@ -581,13 +452,13 @@ end
 
 get "/path" do
   haml :simple_page
-  ------------------ (switch layout engine)
+  --- (switch layout engine)
   erb   :simple_page
-  ------------------ (markdown, textile, ….)
+  --- (markdown, textile, ….)
   "blabla" # render text
-  ------------------
+  ---
   File. read "a_file.format"
-  -------------
+  ---
   your_custom_format :file (do it, it helps, i did mine [Saf])
 end
 
@@ -609,7 +480,7 @@ refactor routes in other files (separate routes by area, more flexible than thin
 
 sinatrize!!!!
 
-----
+---
 
 related talks:
 
@@ -617,13 +488,13 @@ Florian Gilcher - A la carte, please!: http://youtu.be/tgHMLkMCvzs
 
 he has a lot of things to say about defaults but he misses a big important point: rack speed, and having a light environment :)
  
-------
+---
 
 Ruby refactor
 
 "in ruby, when you realize that you use a lot of parenthesis in your code, then  maybe it's time to refactor to reduce complexity"
 
-----
+---
 
 talk about: 
 
@@ -682,7 +553,7 @@ they mostly need JSON APIs
 
 
 
--------
+---
 
 
 commit messages: 
@@ -831,7 +702,7 @@ you can go really crazy with that
 // hmargin, vpadding, hpadding
 
 
----------
+---
 
 .profile
 
@@ -847,13 +718,13 @@ and i will not show more of them
 
 you have to create them (especially if you have a dynamic type of memory (more than visual or  one) )
 
-----------------
+---
 
 if you can, don't search google
 have your doc/apis downloaded and gogogogo!!!
 
 home
-----
+---
 
 rubyday
 
@@ -921,7 +792,7 @@ how it will rails survive?
 [serializers(json), streaming, events]
 
 
-----
+---
 
 ruby coding from scratch
 
@@ -982,7 +853,7 @@ then other people may find it and use it and you can become a maintainer
 
 
 
------
+---
 
 
 
@@ -991,7 +862,7 @@ then other people may find it and use it and you can become a maintainer
   #   - start different classes for different objects (at cost of duplicating your code) then join them trough relations
   #   - iterators compared -> java / php / ruby / underscore.js
 
-  # ---- [way to code] -  live coding
+  # --- [way to code] -  live coding
 
   # think of a functionality
 
@@ -1014,56 +885,8 @@ then other people may find it and use it and you can become a maintainer
   # imagine if there's  an editor that saves all edits, and replays them, that are only like diffs (like git)
 
 
-----
 
-code it from scratch
-
-data attributes
-
-
-img = document.querySelector("img.antani")
-
-Q = document.querySelector
-$ = document.querySelector
-
-
-img = $("img.antani")
-img = Q("img.antani") // use specific tags in your js (especially if a specific tag like an img/audio/video/section/span/caption...)
-
-// jquery
-img.data("id")
-
-
-// wouldn't be better if it was
-img.data,id     // ?
-
-
-// well in js is really like this
-img.dataSet.id
-
-// oh but if you use jquery you need a 
-
-//
-
-
-// so again, do it from scratch people!!
-
-// especially if it's your boss paying for your code time!
-
-// use the fucking time to learn! and not to learn to use a library well, but to build something simple and useful where it's needed
-
-// i'm not saying NO to every libs, I just say
-
-// think about it.... this part is better coded from scratch!!
-
-// prototyping // dealing with change // "lean" // "agile" // insert buzzword here! // from a fucking blank editor!  you know?  
-img.dataset.id
-
-
-other examples: (append/prepend etc)
-http://www.leebrimelow.com/native-methods-jquery/
-
-------------
+---
 
 write methods you are going to implement
 
@@ -1077,10 +900,10 @@ there is a cost in switching between analytic and creative (intuition) mode, you
 
 so, again, code it from the fucking
 
-----
+---
 
 
------
+---
 
 create your own master branch and commit bugs to it
 
@@ -1088,21 +911,21 @@ create your own master branch and commit bugs to it
 
 
 
------
+---
 
 do live coding, pair programming, build prototypes together
 
 think about an idea and try to make it (a prototype) on the same day
 
 
------
+---
 
 example of progressive refactoring // modulization // from script to oo
 
 
 nothing
 
-----
+---
 
 // code that does something
 
@@ -1110,11 +933,11 @@ nothing
 
 
 
------
+---
 
 for sysadmin i suggested the sh way to some programmer friends, i showed them a bit of setup code and told them to share their, and it worked very well 
 
--------------
+---
 
 
 ---
@@ -1168,7 +991,7 @@ I like standards, especially if they're easy, to give the possibility to anyone 
 we have the ability to make, it's inside our human nature, we can make things that can change the world, 
 
 
-----
+---
 
 [parallel but not the best fit]
 fits more on a talk on: bootstrap your own product
@@ -1205,7 +1028,7 @@ self: you can't spend anything, you can't
 if you use compilers (especially html and css) make sure they output a good code
 or make your sources public (repository/put them in the same public directory and "link" to them with a comment <!-- --> // ) 
 
-----
+---
 
 use guard
 to automate your workflow / coding sessions
@@ -1218,12 +1041,12 @@ guard-livereload
 guard-concat
 
 
-------
+---
 underscore js
 
 dont use it like shown in the examples :D
 
-----
+---
 
 _([array]).map ... -> ...
 
@@ -1241,7 +1064,7 @@ and you can do
 
 array.map(....
 
--------
+---
 
 things to say at the end [about coding it from scratch]
 
@@ -1259,7 +1082,7 @@ not compiled - see video: http://www.ustream.tv/recorded/33526011
 
 very precise mad man (not just the average programmer)
 
--------------
+---
 
 when you find new library and you want to try it
 
@@ -1273,4 +1096,4 @@ start playing
 
 
 
------
+---

@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8" />
+<link rel="stylesheet" href="/vendor/rainbow_github.css">
 <style>
 body {
   margin: 0;
   font-size: 1.6em;
+  font-family: Georgia;
+}
+
+pre, code {
+/*  font-size: 30px;*/
+  line-height: 1.2em;
 }
 
 .slides {
-  width: 90%;
-  margin: 2em auto;
+/*  width: 90%;
+  margin: 2em auto;*/
+  padding: 2em 5%;
 }
 
 .slides div {
@@ -22,6 +30,13 @@ body {
   right: 0;
   position: absolute;
 }
+
+.slides.terminal {
+  font-family: Monaco;
+  color: green;
+  background: black;
+}
+
 </style>
 
 <body>
@@ -30,6 +45,7 @@ body {
 <button class="fullscreen">&#8689;</button>
 </body>
 
+<script type="text/javascript" src="/vendor/rainbow.js"></script>
 <script src="/vendor/textile.js"></script>
 <script src="/utils.js"></script>
 <script src="/presentation.js"></script>
