@@ -1,0 +1,1276 @@
+
+[30 mins]
+
+5min intro
+5min ruby
+5min JS
+5min CSS
+5min questions
+
+
+---
+
+
+Did you...
+
+- wait for minutes for a test suite to finish
+- discovered a feature you need in library "x" is not implemented
+- hit bugs in the library x and realized it's gazillion lines of long messy code?
+- spent more time in searching documentation than 
+
+so for the next project consider
+
+
+[note: there will be some slides full of code, so if you are interested you may follow along with bit.ly/codeifs ]
+
+
+----
+----
+
+london:
+---
+
+code it from scratch
+do it from scratch
+do it yourself (DIY)
+CIY (Code it Yourself)
+start from a blank editor
+start from a blank file
+		   a fresh project
+
+---
+
+CIY (Code it Yourself)
+
+like DIY for things, if it's cheaper
+in the end you will learn something new
+or if you already know those things (let's say you need a pagination library) you can do it for exercise
+to try a new TDD/BDD/etc way of coding
+to train yourself
+
+[warning: I'm not saying that you should rebuild EVERYTHING, that could be "a little" time consuming :)]
+so don't rebuild rails if you need every part of it
+
+instead, if you code something, and you see it's [simpler / solves the problem better / it has a feature that other libs don't / has a better api]
+release that code as a library
+
+- reuse it in other projects
+- let other people use it, open source it
+-- if people ask for features
+-- tell people to fork it and implement those themselves
+
+
+---
+
+i'm not saying it's easy, especially with a big and "already running in production" project, but! you surely have another 
+
+so, before you add x^n dependencies, consider to code it from a blank environment
+
+
+
+---
+
+important:
+
+coding from scratch keep your programmer memory fresh
+less cut n paste
+you need to produce
+more modular code
+more targeted code
+
+less: use this or that library, hammer 2-3 things here and there and go
+you are more forced to think about the problem and about the language / apis you have
+before using an external library think: do I really need it?
+doing this will I save time in the end?
+
+---
+
+reach the MVP (minimal viable product)
+MVD (minimal viable demo)
+then iterate on that
+
+---
+
+prefer small iterations over big upfront overstructured designs
+
+follow the "flow"
+
+---
+
+# empty doc
+
+---
+
+# code that does stuff
+# ...
+# ...
+# ...
+
+---
+
+# code refactored in methods
+
+def a
+  # ...
+end
+
+def b
+  # ...
+end
+
+def main
+  # calling and using a, b ...
+end
+
+main # calling main
+
+---
+
+extract in module / classes
+
+# utils
+
+module Feature
+  def a
+    # ...
+  end
+  # ...
+end
+
+# main
+
+class X
+  include Feature
+  
+  def run
+    # 
+  end
+end
+
+x = X.new
+x.run
+
+---
+
+only now, extract in different files
+
+require "feature"
+
+class X
+  # ...
+
+---
+
+think about having an env file
+
+require './env'
+
+
+to do `irb -r ./env.rb` and have your environment loaded (like script/console)
+
+---
+
+look at different requiring mechanisms
+
+require "file" # standard, you don't have to change it from gem
+require "./file" 
+require_relative "file"
+
+append to $LOAD_PATH # i don't like a lot this approach
+
+# my favourite
+
+path = File.expand_path "../", __FILE__
+require "#{path}/file"
+
+
+# main class
+
+class App
+  @@path = File.expand_path "../", __FILE__
+end
+
+
+# where there's "../" you will put your root project dir level
+
+---
+
+example: 
+
+app dir /
+  |
+  -- app.rb
+  -- ..
+
+# in app.rb it will be "../"
+
+---
+
+app dir /
+  |
+  -- lib/
+      |
+      -- app.rb
+      -- ..
+  -- ..
+
+# in app.rb it will be "../../", etc...
+
+
+
+---
+
+
+
+
+---
+
+cuuuustooooom foooormaaats!!!
+
+(saf, textile/markdown + extensions [github flavored markdown, it's just a pre/post parser] , pre-parsed sass for themed variables ..., write code that writes code :) ) 
+
+---
+
+JS
+
+build your own:
+  - click events
+  - image gallery
+  - autocomplete
+  - infinite page scrolling
+  - manage history state (push/pop)State yourself
+  - please don't use pjax / fast-rails-hack-ajax-speed-reload-antani?
+  - 
+  
+also don't use ; they are optional! (except when you use the wrapping namespace () ) - (function(){ }) 
+
+use zepto instead of jquery - if you don't plan to support ie 8
+
+click event example:
+
+  // with jquery/zepto
+
+  $("a.clickable").on("click", function(evt){
+    console.log("clicked")
+    evt.preventDefault()
+  })
+  
+  // that becomes:
+  
+  var link = $("a.clickable")
+  link.on("click", function(evt){
+    console.log("clicked")
+    evt.preventDefault()
+  })
+  
+  // and finally:
+
+  var link = $("a.clickable")
+  var handle_click = function(evt){
+    console.log("clicked")
+    evt.preventDefault()
+  }
+  link.on("click", handle_click)
+
+  // plain js
+
+  var link = document.querySelector("a.clickable")
+  var handle_click = function(evt){
+    console.log("clicked")
+    evt.preventDefault()
+  }
+  link.addEventListener("onclick", handle_click)
+
+
+not that hard isn't it?
+
+
+---
+
+pros:
+
+you feel more in control
+
+things are usually faster, you can optimize it more
+
+---
+
+sometimes you have an idea:
+
+"I need a tool that does X"
+
+you have 2 options:
+
+- search if there's a library that already does that
+- code it yourself
+
+when you are starting usually you don't have the idea of how the implementation it will going to be
+if it's easy to do it, do it
+if you search around and see others people products/implementations you may be deviated by what you really need and what you really can do 
+inspiration is ok
+but the "blank mind" let you express yourself freely
+not looking at other people solutions you can go where others are not arrived
+
+programming is creative, don't do only code assembly, go beyond that, create! :D 
+
+
+---
+
+drawbacks:
+
+bugs may happen
+
+you need to test more and on actual devices
+- tell the client / user
+
+more code to support differences between devices
+
+more work for older devices
+
+
+
+
+
+mkvair:
+---
+
+You should build a site/app
+  that you love
+  that you need
+  that you use
+
+so the testing and improving phase is gratis! :D 
+
+
+Ruby developers
+focus a lot on backends and
+focus less on frontend [forget that html/css/js (for ux elements) is also programming, especially when preprocessors are involved]
+
+
+
+
+Do it yourself, you'll save time in the end:
+
+Sinatra over Rails
+SASS over Compass
+JS over JQuery Plugins
+
+If you code something, from the ground up, you are sure that you do it based on what you need
+
+
+As long as you work for a client / company, your first target after delivering stuff should be of improving yourself
+
+
+Don't use a lot of gems:
+
+
+# Pagination
+
+It's simple:
+
+posts = [{..}, {...}, {...}]
+per_page = 5
+
+size = posts.size
+pages = size / per_page
+
+## pseudo code
+
+# pagination_links
+
+1.upTo(pages) do |i|
+  "<a href='/?pag=#{i}'>#{i}</a>"
+end
+
+# controller code (depends a lot on your data / ORM)
+
+limit = params[:page]*per_page
+posts.limit(limit, limit+per_page)
+
+# that's it
+
+---
+
+# Authentication
+
+require 'bcrypt'
+
+User
+  
+  after_create
+
+    generate_salt
+    hash_password self.password
+
+
+@@secret = "sblinda_comeseffosse_antani"
+
+def crypt
+  BCrypt.crypt #TODO: look at documentation
+end
+
+def generate_salt
+  crypt Time.now.to_i + @@secret
+end
+
+def hash_password(password)
+  crypt "#{self.salt}_#{password}"
+end
+
+def valid_password?(password)
+  self.password == crypt(password)
+end
+
+---
+
+# controller
+
+if user.username == username && user.valid_password?(password)
+  session[:user_id] = user.id # for example
+end
+
+---
+
+# in controller
+
+def logged_in?
+  session[:user_id]
+end
+
+def logout
+  session[:user_id] = nil
+end
+
+
+Standard authentication is simple
+
+
+---
+
+View Helpers
+
+def link_to(label, link)
+  "<a href='#{link}'>#{label}</a>"
+end
+
+tag() // html_tag() // 
+haml_tag(:a, href: "/url"){ haml_concat label }
+
+hey rails users:
+are you sure that abstracting urls is really a good idea?
+
+# sinatra
+
+get "/url" do
+  # action
+end
+
+# rails
+
+match "/url", to: "controller#action"
+
+class Controller
+  def action
+    # ...
+  end
+end
+
+---
+
+# why?
+
+link_to "Label", action_path
+
+match "/url", to: "controller#action", as: :action
+
+class Controller
+  def action
+    # ...
+  end
+end
+
+---
+
+# do: 
+
+link_to "Page", "/url"
+
+
+
+Use HAML (or slim) !? maybe?
+
+%a{ href: "/url" } Label
+
+
+---
+
+Use Classes!
+
+Domain Driven Design is starting from Plain Old Ruby Objects
+
+don't forget about them!
+
+tools: Hash, Mhash, Struct, Class
+
+Use Memory!
+
+without persisting them (at the beginning)!
+
+tools: File.open, File.write, JSON, Yaml, (insert here your custom format ex: Saf)
+
+Use Disk!
+
+why use a complex DB? for until 3k users?
+use disk!
+scale later!
+
+consider integrating early an easy solution for fast data storage scaling (Redis)
+
+
+Don't scale early, really?
+
+
+Use testing
+
+Rule #1: Feedback cycle from code to review should be as fast as possible
+use guard/livereload/rerun
+
+[that's why sinatra > rails]
+
+Incremental development
+[pivoting (so rewrite)  can be imminent]
+
+
+You use ruby?
+
+you want to do iOS ? RubyMotion / mruby
+
+you want to do android? Mirah  / mruby
+
+
+
+----
+action
+
+build an app with sinatra
+
+start with classy style
+
+config.ru
+require_relative "your_app.rb"
+run YourApp
+
+app.rb
+require_relative "config/env.rb" # put your env (gem requires, models, domain logic, other modules) in a separate file
+
+class YourApp
+  get "/" do
+    erb :index
+  end
+end
+
+erb.index
+<h1>Hello World</h1>
+
+
+routes
+
+get "/" do
+end
+
+
+get "/path" do
+  haml :simple_page
+  ------------------ (switch layout engine)
+  erb   :simple_page
+  ------------------ (markdown, textile, ….)
+  "blabla" # render text
+  ------------------
+  File. read "a_file.format"
+  -------------
+  your_custom_format :file (do it, it helps, i did mine [Saf])
+end
+
+meta: generate routes:
+
+pages = %w(a b c)
+pages.each do |page|
+	get "/#{page}" do
+           @section = params[:section]
+           haml :simple_page
+        end
+end
+
+refactor routes in other files (separate routes by area, more flexible than thinking about controller) [main, auth, static, api, …] (if you want something more like a rails controller see Padrino controllers) 
+
+
+# hands on part:
+(video?)
+
+sinatrize!!!!
+
+----
+
+related talks:
+
+Florian Gilcher - A la carte, please!: http://youtu.be/tgHMLkMCvzs
+
+he has a lot of things to say about defaults but he misses a big important point: rack speed, and having a light environment :)
+ 
+------
+
+Ruby refactor
+
+"in ruby, when you realize that you use a lot of parenthesis in your code, then  maybe it's time to refactor to reduce complexity"
+
+----
+
+talk about: 
+
+guard-reload
+
+how to reload code
+how to relaunch a process (apps / processes) in ruby
+
+structs
+
+mhash (prototype with real objects)
+
+
+textilecms page
+
+Blizz
+https://github.com/makevoid/blizz
+
+class Page
+
+  def self.create_accessors(hash)
+    attr_accessor *hash.keys
+  end
+
+  def self.load(hash)
+    page = Page.new
+    page.load hash
+    page.classify_contents
+    page
+  end
+
+  def load(hash)
+    Page.create_accessors hash
+    load_contents hash
+  end
+
+  private
+
+  def load_contents(hash)
+    hash.map do |key, val|
+      # self.send "#{key}=", val
+      instance_variable_set "@#{key}", val
+    end
+  end
+
+end
+
+
+Clientside app JS frameworks
+
+Ember // Agular // Backbone // ...
+
+they need minimal html generation (just some templates handling)
+
+they mostly need JSON APIs
+
+
+
+-------
+
+
+commit messages: 
+
+be creative! implemented x because it's awesome
+fixing again, it's the 100th time, i think it's time to change y
+
+
+---
+
+# SASS
+
+css resets
+
+compass > bourbon > custom mixins
+
+> if you use *compass* drop to *bourbon* then drop to custom mixins 
+
+finalize when you have to ship it, don't overoptimize prematurely!
+
+my favourite css reset:
+
+// right, just that
+
+body {
+  margin: 0;
+}
+
+// and if you use links
+
+a {
+  text-decoration: none
+}
+
+
+// support IE
+
+img {
+  border: 0
+}
+
+
+SASS hands on:
+
+do layouts by yourself
+
+don't use css frameworks / grid systems / boilerplates
+
+use box-sizing for layouts
+
+box-sizing: border-box
+
+it allows you to think about the content width without too many calculations
+you can mix fluid (%/em) widths and fixed paddings (in px) 
+
+[your playground it's always ready]
+
+	# index.html
+	
+	<style>
+		div {
+			box-sizing: border-box
+		}
+	</style>
+
+	<div>this is a valid html page</div>
+
+
+use SASS/Less/etc variables and operations:
+
+	# SASS example
+
+	$main: 80%
+	$side: 2%
+	$rest: $main - $side*2
+
+
+---
+
+box-sizing example:
+
+  <style>
+    body, html {
+      margin: 0;
+    }
+  
+  	div {
+    	-moz-box-sizing: border-box;
+    	box-sizing: border-box;
+  	  float: left;
+  		background: lightGrey;
+  		width: 50%;
+  		padding: 20px;
+  	}
+  </style>
+
+  <div>a div</div>
+  <div>another div</div>
+
+
+hack CSS, create your own SASS mixins:
+
+=box_sizing
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+=box
+ +box_sizing
+ float: left
+
+you can go really crazy with that
+
+=left
+  float: left
+  
+=right
+  float: right
+  
+=center
+  margin: 0 auto
+    
+=center_text
+  text-align: center
+  
+# legacy browser support center
+  
+=center
+  margin: 0 auto
+  text-align: center
+  *
+    text-align: center
+
+=hidden
+  display: none
+
+=bg($bg) // why bg? because background is too long/hard to type ^^
+  background: $bg
+
+=rounded($amount)
+  +border_radius($amount)
+  
+=vmargin($top, $bot: $top)
+  margin-top: $top
+  margin-bottom: $bot
+  
+// hmargin, vpadding, hpadding
+
+
+---------
+
+.profile
+
+aliases 
+
+serve - python simplehttpserver
+
+git
+  gcom
+  gplm
+
+and i will not show more of them 
+
+you have to create them (especially if you have a dynamic type of memory (more than visual or  one) )
+
+----------------
+
+if you can, don't search google
+have your doc/apis downloaded and gogogogo!!!
+
+home
+----
+
+rubyday
+
+
+learn javascript
+use plain js apis [MDN is a great place to find apis explained]
+use underscore.js (ruby constructs) and coffeescript (ruby syntax)
+
+expand your ruby horizons
+
+don't do just rails, don't do just web
+
+
+ruby for mobiles 
+
+ios -> rubymotion / mobiruby (mruby)
+android -> pindah (mirah (ruby like jvm language))
+elixir (erlang)
+rubyjs - opalrb - webruby [js]
+groovy (jvm)
+desktop guis: jruby swing (profligacy) / qt / gtk
+enhanced bash (build tools like puppet/chef (but better) as mina did it with capistrano)
+html5 -> appcache / installable app / phonegap / firefox os 
+
+
+- jruby (processing)
+- ruby midi
+- arduino
+ruby for 3d
+- sketchup ruby api 
+- ruby scad
+
+code what you need
+put it open source
+
+try try try try
+
+play
+
+create 
+
+enjoy / have fun
+
+learn
+
+teach
+
+another person comes by
+forks the project
+makes his own modifications -> uses it
+sees something useful for others
+sends you patches / builds a new version (and maybe pull from you)
+
+
+future:
+
+javascript driven apps
+stream only json
+html5 apps on devices
+schema.org (descriptive tags new rdf?)
+webgl
+
+
+how it will rails survive?
+[serializers(json), streaming, events]
+
+
+----
+
+ruby coding from scratch
+
+at some point you need a library / etc
+• because you are lazy
+• because you need to release early
+• and you know the library works well and is well maintained
+• etc
+
+so, here are some things to watch out when you choose a library
+
+STABILITY
+
+UPGRADABILITY
+
+SPEED
+require time
+• testing
+note [eye icon]: not many monkeypatches - lots of them can slow testing time (lots of monkeypatches can be) [consider "fixing" the library with refinements]
+
+
+
+Feedback loop is key
+
+use aliases
+
+use scripts to speed up your workflow (aliases, Procfile, guard, rerun)
+
+
+split monitor - use hotkeys to switch fom your editor / browser / terminal
+
+
+Don't use VMs
+
+build a script that setups the environment
+
+
+don't use chef
+a sh script is better for starting
+
+there's really not a good default for everything 
+your custom configs can be better
+an sh/ruby script is easier to edit that anything else
+(if you structure it well)
+
+
+-- 
+
+if you use a library and you have a bug (especially if it's only on one env and not on all)
+
+you don't know if it/s your code fault or the one written in the library
+you have to go inside the library code to check for the bug
+
+====
+
+if you write code that you can extract to your own library
+then other people may find it and use it and you can become a maintainer
+
+
+
+-----
+
+
+
+  # put in talk:
+
+  #   - start different classes for different objects (at cost of duplicating your code) then join them trough relations
+  #   - iterators compared -> java / php / ruby / underscore.js
+
+  # ---- [way to code] -  live coding
+
+  # think of a functionality
+
+  # start from a blank ruby file
+
+  # name methods
+
+  # implement them
+
+  # refactor using classes / etc
+
+
+
+  # ideas to implement
+
+  # live coding is awesome
+
+  # live coding screencasts (peepcode / destroyallsoftware .. etc)
+
+  # imagine if there's  an editor that saves all edits, and replays them, that are only like diffs (like git)
+
+
+----
+
+code it from scratch
+
+data attributes
+
+
+img = document.querySelector("img.antani")
+
+Q = document.querySelector
+$ = document.querySelector
+
+
+img = $("img.antani")
+img = Q("img.antani") // use specific tags in your js (especially if a specific tag like an img/audio/video/section/span/caption...)
+
+// jquery
+img.data("id")
+
+
+// wouldn't be better if it was
+img.data,id     // ?
+
+
+// well in js is really like this
+img.dataSet.id
+
+// oh but if you use jquery you need a 
+
+//
+
+
+// so again, do it from scratch people!!
+
+// especially if it's your boss paying for your code time!
+
+// use the fucking time to learn! and not to learn to use a library well, but to build something simple and useful where it's needed
+
+// i'm not saying NO to every libs, I just say
+
+// think about it.... this part is better coded from scratch!!
+
+// prototyping // dealing with change // "lean" // "agile" // insert buzzword here! // from a fucking blank editor!  you know?  
+img.dataset.id
+
+
+other examples: (append/prepend etc)
+http://www.leebrimelow.com/native-methods-jquery/
+
+------------
+
+write methods you are going to implement
+
+don't impelement and then use the methods
+
+it's seems fucking stupid but think about it
+
+a complete area of your brain makes analysis, your prefrontal cortex, then you have a creative part, located on the back sides of your head  
+
+there is a cost in switching between analytic and creative (intuition) mode, you should should maximize the two phases, I think
+
+so, again, code it from the fucking
+
+----
+
+
+-----
+
+create your own master branch and commit bugs to it
+
+-- so you can always be at your last creative phase, even if you broke something
+
+
+
+-----
+
+do live coding, pair programming, build prototypes together
+
+think about an idea and try to make it (a prototype) on the same day
+
+
+-----
+
+example of progressive refactoring // modulization // from script to oo
+
+
+nothing
+
+----
+
+// code that does something
+
+---
+
+
+
+-----
+
+for sysadmin i suggested the sh way to some programmer friends, i showed them a bit of setup code and told them to share their, and it worked very well 
+
+-------------
+
+
+---
+
+
+machine setup: (for your next machine / test deviece / designer machine / coworker ones [especially for remote coworkers])
+
+should be fast
+scripted / you have notes / you remember it well
+
+don't use remote machines or vms to check (these are ok for production), this (at least in the cases i saw) slows down your development process
+
+---
+
+there are a lot of functions in stdlib
+
+
+---
+
+
+
+
+css sass
+
+don't use compass
+               boilerplate (reset what you care about)
+
+
+
+
+use
+
+
+---
+
+IMPORTANT: MAKE YOUR CODE EASY TO READ (in the frontend world) means also  MAKE YOUR HTML/CSS Easy to read
+
+awesome for open source, 
+
+remember when you started with building web sites/apps (and what you do mostly do to evaluate them?)
+
+you open the site/app and click around, play with it
+and next,  yes -> View source
+
+[and that is exactly what makes me mad about not being able to do it on desktop/mobile(ios/android) apps]
+
+that's why i love web technologies (html5/js etc) and even if we have a big elder brother that is very slow (yeah i'm talking about W3C)
+
+I like standards, especially if they're easy, to give the possibility to anyone to create things, and maybe become more of a programmer or designer
+
+we have the ability to make, it's inside our human nature, we can make things that can change the world, 
+
+
+----
+
+[parallel but not the best fit]
+fits more on a talk on: bootstrap your own product
+
+gaming: Ultima Online, you start naked, no money
+
+you have to eat or you'll die
+
+can cultivate plants/ hunt for food
+
+can beg money
+can craft weapons / armors
+mine rocks
+cultivate plants
+harvest wood
+woodcraft
+make fences and houses
+hunt
+fight
+
+
+npcs / monsters / other players
+
+
+
+
+
+lesson: you can create things based on your skills and make a living out of it
+
+self: you can't spend anything, you can't 
+
+---
+
+if you use compilers (especially html and css) make sure they output a good code
+or make your sources public (repository/put them in the same public directory and "link" to them with a comment <!-- --> // ) 
+
+----
+
+use guard
+to automate your workflow / coding sessions
+
+[all guards available list] (github search)
+
+guard-coffeescript
+guard-sass
+guard-livereload
+guard-concat
+
+
+------
+underscore js
+
+dont use it like shown in the examples :D
+
+----
+
+_([array]).map ... -> ...
+
+not
+
+_.map([array], ->)
+
+:)
+
+because so you can refactor as
+
+var array = _([array])
+
+and you can do
+
+array.map(....
+
+-------
+
+things to say at the end [about coding it from scratch]
+
+
+
+---
+
+example:
+
+rubyJS vs opalrb (sorry xxx)
+
+not compiled - see video: http://www.ustream.tv/recorded/33526011
+
+21kb gzipped
+
+very precise mad man (not just the average programmer)
+
+-------------
+
+when you find new library and you want to try it
+
+start with the simple possible example
+
+pick the library, have it in one file
+
+have your main "play" file in another and require it
+
+start playing
+
+
+
+-----

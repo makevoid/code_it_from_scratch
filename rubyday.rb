@@ -8,6 +8,7 @@ module TextileSlides
   def parse_slides(contents)
     slides = []
     slides += contents.split "---"
+    slides.map!{ |s| s.strip }
     slides.to_json
   end
 end
@@ -27,10 +28,16 @@ class Rubyday < Sinatra::Base
   get '/stream', provides: 'text/event-stream' do
     stream :keep_open do |out|
       EventMachine::PeriodicTimer.new(0.1) {
+        # p @@stream
         if @@stream
           out << "data: #{@@stream}\n\n"
           @@stream = nil
+        else
+          out << "data: \n\n"
         end
+      }
+      out.callback { 
+        p "callback called" 
       }
     end
   end
@@ -49,6 +56,8 @@ class Rubyday < Sinatra::Base
   end
   
   get "/slides.json" do
-    parse_slides File.read "./slides.textile"
+    slides = parse_slides File.read "./slides.textile"
+    p slides
+    slides
   end
 end

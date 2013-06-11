@@ -20,10 +20,10 @@ button {
 var prev_btn = document.querySelector(".prev")
 var next_btn = document.querySelector(".next")
 
-var notify_server = function(){
-  console.log("ue")
-  request = new XMLHttpRequest()
-  request.post("/stream", "direction=next")
+var notify_server = function(evt){
+  var direction = evt.target.classList[0]
+  var request = new XMLHttpRequest()
+  request.post("/stream", "direction="+direction)
 }
 
 prev_btn.addEventListener("click", notify_server)

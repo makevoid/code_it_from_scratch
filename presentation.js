@@ -7,14 +7,24 @@ var presentation = {
 
 presentation.load = function(slides) {
   this.slides = slides
-  this.load_slide(0)
+  var slide = 0
+  
+  if (location.hash) {
+    var hslide = location.hash.substr(1)
+    hslide = parseInt(hslide)
+    if (hslide < slides.length)
+      slide = hslide
+  }
+  
+  this.load_slide(slide)
 }
 
 presentation.load_slide = function(idx) {
-  content = this.slides[idx]
+  var content = this.slides[idx]
   content = textile(content)
   this.slides_elem.innerHTML = content
   this.idx = idx
+  location.hash = idx
 }
 
 presentation.prev = function() {
@@ -27,7 +37,7 @@ presentation.next = function() {
     this.load_slide(this.idx+1)
 }
 
-request = new XMLHttpRequest()
+var request = new XMLHttpRequest()
 request.on_success(function(){
   var slides = JSON.parse( request.responseText )
   presentation.load(slides)
@@ -44,13 +54,19 @@ var handle_keyboard = function(evt) {
 
 window.addEventListener("keydown", handle_keyboard)
 
-// TODO: history.state
-
 var source = new EventSource('/stream')
 source.onmessage = function (event) {
+  // console.log("got message: "+event.data)
+  
   if (event.data == "next")
     presentation.next()
     
   if (event.data == "prev")
     presentation.prev()
 }
+
+
+var button = document.querySelector("button.fullscreen")
+button.addEventListener("click", function(){
+  document.documentElement.mozRequestFullScreen()
+})
