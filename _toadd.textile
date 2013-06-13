@@ -1,4 +1,8 @@
 
+notes: http://stackoverflow.com/questions/2999430/any-success-with-sinatra-working-together-with-eventmachine-websockets
+
+---
+
 future:
 
 javascript driven apps
@@ -79,9 +83,9 @@ end
 
 class X
   include Feature
-  
+
   def run
-    # 
+    #
   end
 end
 
@@ -121,12 +125,12 @@ you have 2 options:
 
 when you are starting usually you don't have the idea of how the implementation it will going to be
 if it's easy to do it, do it
-if you search around and see others people products/implementations you may be deviated by what you really need and what you really can do 
+if you search around and see others people products/implementations you may be deviated by what you really need and what you really can do
 inspiration is ok
 but the "blank mind" let you express yourself freely
 not looking at other people solutions you can go where others are not arrived
 
-programming is creative, don't do only code assembly, go beyond that, create! :D 
+programming is creative, don't do only code assembly, go beyond that, create! :D
 
 
 ---
@@ -187,7 +191,7 @@ posts.limit(limit, limit+per_page)
 require 'bcrypt'
 
 User
-  
+
   after_create
 
     generate_salt
@@ -244,7 +248,7 @@ def link_to(label, link)
   "<a href='#{link}'>#{label}</a>"
 end
 
-tag() // html_tag() // 
+tag() // html_tag() //
 haml_tag(:a, href: "/url"){ haml_concat label }
 
 hey rails users:
@@ -282,7 +286,7 @@ end
 
 ---
 
-# do: 
+# do:
 
 link_to "Page", "/url"
 
@@ -392,7 +396,7 @@ pages.each do |page|
         end
 end
 
-refactor routes in other files (separate routes by area, more flexible than thinking about controller) [main, auth, static, api, …] (if you want something more like a rails controller see Padrino controllers) 
+refactor routes in other files (separate routes by area, more flexible than thinking about controller) [main, auth, static, api, …] (if you want something more like a rails controller see Padrino controllers)
 
 
 # hands on part:
@@ -410,7 +414,7 @@ related talks:
 Florian Gilcher - A la carte, please!: http://youtu.be/tgHMLkMCvzs
 
 he has a lot of things to say about defaults but he misses a big important point: rack speed, and having a light environment :)
- 
+
 ---
 
 Ruby refactor
@@ -419,7 +423,7 @@ Ruby refactor
 
 ---
 
-talk about: 
+talk about:
 
 guard-reload
 
@@ -447,7 +451,7 @@ textilecms page
 
 .profile
 
-aliases 
+aliases
 
 serve - python simplehttpserver
 
@@ -455,7 +459,7 @@ git
   gcom
   gplm
 
-and i will not show more of them 
+and i will not show more of them
 
 you have to create them (especially if you have a dynamic type of memory (more than visual or  one) )
 
@@ -479,7 +483,7 @@ expand your ruby horizons
 don't do just rails, don't do just web
 
 
-ruby for mobiles 
+ruby for mobiles
 
 ios -> rubymotion / mobiruby (mruby)
 android -> pindah (mirah (ruby like jvm language))
@@ -488,14 +492,14 @@ rubyjs - opalrb - webruby [js]
 groovy (jvm)
 desktop guis: jruby swing (profligacy) / qt / gtk
 enhanced bash (build tools like puppet/chef (but better) as mina did it with capistrano)
-html5 -> appcache / installable app / phonegap / firefox os 
+html5 -> appcache / installable app / phonegap / firefox os
 
 
 - jruby (processing)
 - ruby midi
 - arduino
 ruby for 3d
-- sketchup ruby api 
+- sketchup ruby api
 - ruby scad
 
 code what you need
@@ -505,7 +509,7 @@ try try try try
 
 play
 
-create 
+create
 
 enjoy / have fun
 
@@ -557,7 +561,7 @@ split monitor - use hotkeys to switch fom your editor / browser / terminal
 
 
 
--- 
+--
 
 if you use a library and you have a bug (especially if it's only on one env and not on all)
 
