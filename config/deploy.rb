@@ -1,6 +1,6 @@
 # configs
 
-app_name = "cifs"
+app_name = "code_it_from_scratch"
 
 
 # deploy
@@ -18,7 +18,7 @@ require 'mina/git'
 
 set :domain,      'makevoid.com'
 set :deploy_to,   "/www/#{app_name}"
-set :repository,  "git://github.com/makevoid/#{app_name}"
+set :repository,  "git@github.com:makevoid/#{app_name}"
 set :branch,      'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
