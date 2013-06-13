@@ -3,9 +3,18 @@
 var textism = function(string) {
 
   var parse_notes_and_styles = function(string) {
+    var notes_regex1 = />&gt; (.+)/g
+    var notes_regex2 = />&gt; (.+)</g
+    var text = string.replace(notes_regex1, '>')
+    var notes
+    if (match = />&gt; (.+)</g.exec(string)) {
+      notes = match[1]
+      console.log(match[1])
+      console.log(match[2])
+    }
     object = {}
-    object.text = string
-    object.notes = "notes"
+    object.text = text
+    object.notes = notes
     object.layout = null
     return object
   }
@@ -29,6 +38,7 @@ var textism = function(string) {
 
 var presentation = {
   slides_elem: document.querySelector(".slides"),
+  notes_elem: document.querySelector(".notes"),
   slides: [],
   idx: 0
 }
@@ -51,6 +61,7 @@ presentation.load_slide = function(idx) {
   var content = this.slides[idx]
   content = textism(content)
   this.slides_elem.innerHTML = content.text
+  this.notes_elem.innerHTML = content.notes || ""
   this.idx = idx
   location.hash = idx
   Rainbow.color()
@@ -66,6 +77,14 @@ presentation.next = function() {
     this.load_slide(this.idx+1)
 }
 
+presentation.toggle_notes = function() {
+  var style = this.notes_elem.style
+  if (style.display == "block")
+    style.display = "none"
+  else
+    style.display = "block"
+}
+
 var request = new XMLHttpRequest()
 request.on_success(function(){
   var slides = JSON.parse( request.responseText )
@@ -74,11 +93,14 @@ request.on_success(function(){
 request.get("/slides.json")
 
 var handle_keyboard = function(evt) {
-  if (evt.keyCode == 37)
+  if (evt.keyCode == 37) // left arrow
     presentation.prev()
 
-  if (evt.keyCode == 39)    
+  if (evt.keyCode == 39) // right arrow   
     presentation.next()
+    
+  if (evt.keyCode == 78) // n
+    presentation.toggle_notes()
 }
 
 window.addEventListener("keydown", handle_keyboard)

@@ -42,7 +42,8 @@ pre, pre code {
 }
 
 pre .comment {
-    color: #998;
+    color: #777;
+    background: #eee;
 }
 
 pre .support {

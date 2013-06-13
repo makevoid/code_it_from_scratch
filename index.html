@@ -9,6 +9,16 @@ body {
   font-family: Georgia;
 }
 
+a {
+  color: #C00; 
+}
+a:hover {
+  color: #F00; 
+}
+
+p {
+  line-height: 2em;
+}
 pre, code {
 /*  font-size: 30px;*/
   line-height: 1.2em;
@@ -29,6 +39,15 @@ pre, code {
   bottom: 0;
   right: 0;
   position: absolute;
+}
+
+.notes {
+  position: absolute;
+  bottom: 0;
+  background: rgba(220, 220, 220, 0.5);
+  padding: 5px;
+/*  display: none;*/
+  display: block;
 }
 
 .slides.terminal {
@@ -61,6 +80,8 @@ pre, code {
 
 <body>
 <section class="slides">
+</section>
+<section class="notes">
 </section>
 <button class="fullscreen">&#8689;</button>
 </body>

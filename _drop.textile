@@ -48,3 +48,168 @@ not compiled - see video: http://www.ustream.tv/recorded/33526011
 21kb gzipped
 
 very precise mad man (not just the average programmer)
+
+---
+
+machine setup: (for your next machine / test deviece / designer machine / coworker ones [especially for remote coworkers])
+
+should be fast
+scripted / you have notes / you remember it well
+
+don't use remote machines or vms to check (these are ok for production), this (at least in the cases i saw) slows down your development process
+
+---
+
+// so again, do it from scratch people!!
+
+
+
+// especially if it's your boss paying for your code time!
+
+// use the fucking time to learn! and not to learn to use a library well, but to build something simple and useful where it's needed
+
+// i'm not saying NO to every libs, I just say
+
+// think about it.... this part is better coded from scratch!!
+
+---
+
+
+As long as you work for a client / company, your first target after delivering stuff should be of improving yourself
+
+
+You should build a site/app
+  that you love
+  that you need
+  that you use
+
+so the testing and improving phase is free! :D
+
+---
+
+fast development feedback loop
+
+
+Don't use VMs
+
+build a script that setups the environment
+
+
+don't use chef
+a sh script is better for starting
+
+there's really not a good default for everything 
+your custom configs can be better
+an sh/ruby script is easier to edit that anything else
+(if you structure it well)
+
+---
+
+
+for sysadmin i suggested the sh way to some programmer friends, i showed them a bit of setup code and told them to share their, and it worked very well 
+
+---
+
+---
+
+h1. icons
+
+&#x1F30D; hello world
+
+&#9200;
+&#9203;
+&#9995; stop
+&#9989; check
+
+&#10024; magic
+&#x1F52E;
+
+&#10060; cross
+
+&#11088; star
+
+&#x1F680; rocket
+
+rails
+&#x1F682;
+&#x1F683;
+&#x1F684;
+
+&#x1F3A9; magic1
+
+&#x1F3AF; target
+
+&#x1F3B2; dice
+
+&#x1F37A; beer
+
+&#x1F6A6; traffic light
+
+&#x1F6B6; walk 
+
+&#x1F6BD; wc
+
+&#x1F64B; questions
+
+&#x1F648;
+&#x1F64A;
+&#x1F649;
+
+&#x1F446; pregunta
+
+&#x1F449; point right
+&#x1F448;  point left
+
+&#x1F44C; perfect
+&#x1F44D; thumbs up
+&#x1F44E; thumbs down
+&#x1F453; nerd
+
+&#x1F47D;  alien
+
+&#x1F48A; pill
+
+&#x1F4A3; bomb
+
+&#x1F4AA; flex
+
+&#x1F4A9; poo
+
+&#x1F4B0; profit
+&#x1F4C8;
+
+&#x1F4C9; chart down
+
+&#x1F4CC;  pushpin
+&#x1F4D4; notebook
+&#x1F4DD;
+
+&#x1F514; bell
+
+&#x1F512; security
+&#x1F513; open
+
+&#x1F525; fire
+
+&#x1F600; happy
+&#x1F605; sweat
+&#x1F613; sweat sad
+
+&#x1F60E; sunglasses
+
+&#x1F620; angry
+&#x1F628; fear
+&#x1F631; more fear
+
+&#x1F3C1; finish
+
+&#x1F3E0; home
+
+&#x1F422; turtle
+&#x1F407; rabbit
+&#x1F40E;  horse
+
+&#x1F19A; VS
+
+http://www.utf8-chartable.de/unicode-utf8-table.pl?start=128512&number=1024&utf8=-&unicodeinhtml=hex
+

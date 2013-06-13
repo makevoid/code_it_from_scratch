@@ -1,4 +1,28 @@
 
+future:
+
+javascript driven apps
+stream only json
+---
+
+"single page" apps
+
+Clientside app JS frameworks
+
+Ember // Agular // Backbone // ...
+
+they need minimal html generation (just some templates handling)
+
+they mostly need JSON APIs
+
+---
+
+
+how it will rails survive?
+[serializers(json), streaming, events]
+
+---
+
 [30 mins]
 
 5min intro
@@ -19,15 +43,6 @@ start from a blank editor
 start from a blank file
 		   a fresh project
 
----
-# empty doc
-
----
-
-# code that does stuff
-# ...
-# ...
-# ...
 
 ---
 
@@ -85,10 +100,6 @@ class X
 ---
 
 
-cuuuustooooom foooormaaats!!!
-
-(saf, textile/markdown + extensions [github flavored markdown, it's just a pre/post parser] , pre-parsed sass for themed variables ..., write code that writes code :) ) 
-
 
 
 pros:
@@ -137,31 +148,8 @@ more work for older devices
 
 ---
 
-You should build a site/app
-  that you love
-  that you need
-  that you use
-
-so the testing and improving phase is gratis! :D 
 
 
-Ruby developers
-focus a lot on backends and
-focus less on frontend [forget that html/css/js (for ux elements) is also programming, especially when preprocessors are involved]
-
-
-
-
-Do it yourself, you'll save time in the end:
-
-Sinatra over Rails
-SASS over Compass
-JS over JQuery Plugins
-
-If you code something, from the ground up, you are sure that you do it based on what you need
-
-
-As long as you work for a client / company, your first target after delivering stuff should be of improving yourself
 
 
 Don't use a lot of gems:
@@ -245,7 +233,7 @@ def logout
 end
 
 
-Standard authentication is simple
+Standard authentication is simple!
 
 
 ---
@@ -412,6 +400,9 @@ refactor routes in other files (separate routes by area, more flexible than thin
 
 sinatrize!!!!
 
+"link":https://gist.github.com/makevoid/2385559
+
+
 ---
 
 related talks:
@@ -442,46 +433,8 @@ mhash (prototype with real objects)
 
 textilecms page
 
-Blizz
-https://github.com/makevoid/blizz
-
-class Page
-
-  def self.create_accessors(hash)
-    attr_accessor *hash.keys
-  end
-
-  def self.load(hash)
-    page = Page.new
-    page.load hash
-    page.classify_contents
-    page
-  end
-
-  def load(hash)
-    Page.create_accessors hash
-    load_contents hash
-  end
-
-  private
-
-  def load_contents(hash)
-    hash.map do |key, val|
-      # self.send "#{key}=", val
-      instance_variable_set "@#{key}", val
-    end
-  end
-
-end
 
 
-Clientside app JS frameworks
-
-Ember // Agular // Backbone // ...
-
-they need minimal html generation (just some templates handling)
-
-they mostly need JSON APIs
 
 
 
@@ -567,17 +520,7 @@ sees something useful for others
 sends you patches / builds a new version (and maybe pull from you)
 
 
-future:
 
-javascript driven apps
-stream only json
-html5 apps on devices
-schema.org (descriptive tags new rdf?)
-webgl
-
-
-how it will rails survive?
-[serializers(json), streaming, events]
 
 
 ---
@@ -612,19 +555,6 @@ use scripts to speed up your workflow (aliases, Procfile, guard, rerun)
 
 split monitor - use hotkeys to switch fom your editor / browser / terminal
 
-
-Don't use VMs
-
-build a script that setups the environment
-
-
-don't use chef
-a sh script is better for starting
-
-there's really not a good default for everything 
-your custom configs can be better
-an sh/ruby script is easier to edit that anything else
-(if you structure it well)
 
 
 -- 
@@ -676,20 +606,6 @@ then other people may find it and use it and you can become a maintainer
 
 ---
 
-write methods you are going to implement
-
-don't impelement and then use the methods
-
-it's seems fucking stupid but think about it
-
-a complete area of your brain makes analysis, your prefrontal cortex, then you have a creative part, located on the back sides of your head  
-
-there is a cost in switching between analytic and creative (intuition) mode, you should should maximize the two phases, I think
-
-so, again, code it from the fucking
-
----
-
 
 ---
 
@@ -706,50 +622,6 @@ do live coding, pair programming, build prototypes together
 think about an idea and try to make it (a prototype) on the same day
 
 
----
-
-example of progressive refactoring // modulization // from script to oo
-
-
-nothing
-
----
-
-// code that does something
-
----
-
-
-
----
-
-for sysadmin i suggested the sh way to some programmer friends, i showed them a bit of setup code and told them to share their, and it worked very well 
-
----
-
-
----
-
-
-machine setup: (for your next machine / test deviece / designer machine / coworker ones [especially for remote coworkers])
-
-should be fast
-scripted / you have notes / you remember it well
-
-don't use remote machines or vms to check (these are ok for production), this (at least in the cases i saw) slows down your development process
-
----
-
-
-use guard
-to automate your workflow / coding sessions
-
-[all guards available list] (github search)
-
-guard-coffeescript
-guard-sass
-guard-livereload
-guard-concat
 
 ---
 
