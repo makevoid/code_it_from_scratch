@@ -445,6 +445,22 @@ so, before you add x^n dependencies, consider to code it from a blank environmen
 
 ---
 
+h2. models / DDD
+
+
+> ruby part:
+
+> models: stated before
+
+
+
+---
+
+there are a lot of functions in stdlib, use them!
+
+
+---
+
 h1. icons
 
 &#x1F30D; hello world

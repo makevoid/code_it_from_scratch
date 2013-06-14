@@ -60,6 +60,8 @@ $ rails new appname
 
 ---
 
+have you ever seen this in rails?
+
 ```bash
 $ rake test
 ```
@@ -103,7 +105,9 @@ $ rake test
 > [terminal]
 ---
 
-(freshly created app)
+or maybe this:
+
+_(freshly created app)_
 
 ```bash
 $ rails console
@@ -497,7 +501,21 @@ h3. data is code, code is data
 ---
 
 
-data > write to file
+h3. read file > eval contents > data!
+
+
+```ruby
+objects = File.read "./db/data.rb"
+
+puts objects #=> [{}, {}]
+```
+
+> ..and you can simply retrieve them with an eval (of course you can use yaml/json/redis/pstore if you prefer)
+
+
+---
+
+h3. data > write to file
 
 ```ruby
 objects = [{ }, { }]
@@ -509,18 +527,6 @@ end
 
 > your collection of objects can be easily wrote to file
 
----
-
-read file > eval contents > data!
-
-
-```ruby
-objects = File.read "./db/data.rb"
-
-puts objects #=> [{}, {}]
-```
-
-> ..and you can simply retrieve them with an eval (of course you can use yaml/json/redis/pstore if you prefer)
 
 ---
 
@@ -533,16 +539,6 @@ you can dynamically load datas and modify your objects
 *instance_variable_set* 
 
 are your friends!
-
----
-
-choice:
-
-]]]]]] SKIP TO CODE RELOADING
-
-]]]]]] CONTINUE WITH RUBY EXAMPLES
-
-]] blizz follows
 
 
 ---
@@ -578,9 +574,14 @@ end
 ---
 
 without method missing
+
 without instance/class eval
 
-those are cool but not very clear to debug, isn't it?
+<br>
+
+those are cool but:
+
+*not very clear to document/debug*, isn't it?
 
 ---
 
@@ -724,11 +725,11 @@ end
 
 autoreload
 
-ctrl+C + up arrow + enter &#x1F600;
+- ctrl C, &uarr; up arrow, &#8629; return &#x1F600;
 
-"Rerun":https://github.com/alexch/rerun
+- "Rerun":https://github.com/alexch/rerun
 
-"guard-relaunch":https://github.com/makevoid/guard-relaunch
+- "guard-relaunch":https://github.com/makevoid/guard-relaunch
 
 > if your [dev env/setup] is slow, you are developing at turtle speed &#x1F422;
 
@@ -830,22 +831,6 @@ end
 etc...
 
 > implement them 
-
----
-
-
-h2. models / DDD
-
-
-> ruby part:
-
-> models: stated before
-
-
-
----
-
-there are a lot of functions in stdlib, use them!
 
 ---
 
@@ -1208,39 +1193,31 @@ for layout:
 # Sass example
 
 $main: 80%
-$side: 2%
-$rest: $main - $side*2
+$side: 16%
+$edges: $main - $side*2 // 2%
 ```
+
+!/imgs/sass_layout.jpg!
 
 ---
 
-create more complex layout system using variables:
-
-
-use color operations to create themes!
+colors!
 
 ```css
 body
-  color: #C00       // red
   background: #EEE  // light grey 
+
+a
+  color: #C00       // red
 ```
+
+<div class="colors1">
+  <a href="#">link</a>
+</div>
 
 ---
 
-extract the colors you use into variables
-
-```css
-$main_color: #C00
-$bg_color: #EEE
-
-body
-  color: $main_color
-  background: $bg_color
-```
-
----
-
-
+extract the colors you use into variables:
 
 ```css
 $main_color: #C00
@@ -1248,7 +1225,15 @@ $bg_color: #EEE
 
 body
   background: $bg_color
+  
+a
+  color: $main_color  
 ```
+
+<div class="colors1">
+  <a href="#">link</a>
+</div>
+
 
 ---
 
@@ -1264,6 +1249,16 @@ a:hover
   // makes it darker
 ```
 
+<div class="colors1">
+  <a href="#">link</a>
+</div>
+<div class="colors2">
+  &nbsp;
+</div>
+<div class="colors1">
+  &nbsp;  
+</div>
+
 ---
 
 
@@ -1271,6 +1266,17 @@ a:hover
 $main_color: #0A0  // green
 $bg_color: #EFE    // light green
 ```
+
+
+<div class="colors3">
+  <a href="#">link</a>
+</div>
+<div class="colors4">
+  &nbsp;
+</div>
+<div class="colors3">
+  &nbsp;  
+</div>
 
 > and if you change the variables, you change the colors! here's your theme generator
 
@@ -1294,10 +1300,14 @@ alpha()
 ---
 
 Ruby developers
-focus a lot on backends
-focus less on frontend 
+focus *a lot* on backends
+focus *too few on frontend* 
 
-[we forget that html/css is also programming, especially when css preprocessors are involved]
+we forget that: 
+
+h3. html/css is also programming!
+
+_especially when css preprocessors are involved_
 
 ---
 
@@ -1309,7 +1319,7 @@ Do it yourself, you'll save time in the end:
 
 If you code something, from the ground up, you are sure that you do it based on what you need.
 
-But! It will take more time, sure :D
+But! It will take more time at the begining &#x1F600;
 
 ---
 
@@ -1527,10 +1537,11 @@ to automate your workflow / coding sessions
   
 ---  
   
-- testing
-  - test model in isolation, require only what you need (multiple spec helpers)
-  - sinatra over rails (blazing fast integration testing)
-  - custom/in memory/redis/datamapper/sequel over activerecord
+h2. Testing
+
+- test model in isolation, require only what you need (multiple spec_helpers)
+- sinatra over rails (blazing fast integration testing)
+- custom/in memory/redis/datamapper/sequel over activerecord
 
 ---
 
@@ -1642,7 +1653,9 @@ you need to produce:
 ---
 
 
-write method names you are going to implement BEFORE implementing them
+write method names you are going to implement
+
+BEFORE implementing them
 
 ---
 

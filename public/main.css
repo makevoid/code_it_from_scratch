@@ -30,9 +30,12 @@ em {
   padding: 2em 5%;
 }
 
+
 .slides div {
   width: 100%;
   background: #DDD;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .fullscreen {
@@ -50,6 +53,7 @@ em {
   display: block;
   font-size: 0.7em;
 }
+
 
 .slides.terminal {
   font-family: Monaco;
@@ -75,4 +79,34 @@ em {
 
 .slides div.layout_example3 {
   padding: 20px 80px;
+}
+
+.slides div.sass_layout {
+  background: #DDD;
+}
+
+.slides div.sass_layout div {
+  float: left;
+}
+
+.slides div.colors1 {
+  padding: 20px 10px;
+  background: #EEE;
+}
+.slides div.colors2 {
+  padding: 20px 10px;
+  background: #CCC;
+}
+
+.slides div.colors3 {
+  padding: 20px 10px;
+  background: #EFE;
+}
+.slides div.colors4 {
+  padding: 20px 10px;
+  background: #CDC;
+}
+
+.slides div.colors3 a {
+  color: #0A0
 }
