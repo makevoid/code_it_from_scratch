@@ -3,6 +3,8 @@ rubydayit_2013_code_it_from_scratch_talk
 
 <http://cifs.mkvd.net>
 
+press n to deactivate presenter notes
+
 This presentation tool is coded from scratch :D
 
 The whole presentation is in textile (slides.textile) with some additions like code highlghting.
