@@ -1,0 +1,78 @@
+
+body {
+  margin: 0;
+  font-size: 1.6em;
+  font-family: Georgia;
+}
+
+a {
+  color: #C00; 
+}
+a:hover {
+  color: #F00; 
+}
+
+p {
+  line-height: 2em;
+}
+pre, code {
+/*  font-size: 30px;*/
+  line-height: 1.2em;
+}
+
+em {
+  font-size: 0.75em;
+}
+
+.slides {
+/*  width: 90%;
+  margin: 2em auto;*/
+  padding: 2em 5%;
+}
+
+.slides div {
+  width: 100%;
+  background: #DDD;
+}
+
+.fullscreen {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+
+.notes {
+  position: absolute;
+  bottom: 0;
+  background: rgba(220, 220, 220, 0.5);
+  padding: 5px;
+/*  display: none;*/
+  display: block;
+  font-size: 0.7em;
+}
+
+.slides.terminal {
+  font-family: Monaco;
+  color: green;
+  background: black;
+}
+
+.slides div.layout_example1, .slides div.layout_example2, .slides div.layout_example3 {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  background: lightGrey;
+}
+
+.slides div.layout_example1 {
+  padding: 20px 0px;
+}
+
+.slides div.layout_example2 {
+  padding: 20px 20px;
+}
+
+.slides div.layout_example3 {
+  padding: 20px 80px;
+}

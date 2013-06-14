@@ -4,6 +4,16 @@ commit messages:
 be creative! implemented x because it's awesome
 fixing again, it's the 100th time, i think it's time to change y
 
+---
+
+
+```ruby
+class App < Sinatra::Base
+  get "/url" do
+    # ...
+  end
+end
+```
 
 
 ---
@@ -300,6 +310,115 @@ for sysadmin i suggested the sh way to some programmer friends, i showed them a 
 
 ---
 
+
+
+hack CSS, create your own Sass mixins:
+
+> SKIP to layouts
+
+```css
+=box_sizing
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+=box
+ +box_sizing
+ float: left
+
+// you can go really crazy with that
+
+=left
+  float: left
+  
+=right
+  float: right
+  
+=center
+  margin: 0 auto
+    
+=center_text
+  text-align: center
+```
+  
+---  
+  
+center with IE support 
+
+```css  
+=center
+  margin: 0 auto
+  text-align: center
+  *
+    text-align: center
+```
+
+---
+
+```css
+=hidden
+  display: none
+
+=bg($bg) // why bg? because background is too long/hard to type ^^
+  background: $bg
+
+=rounded($amount)
+  +border_radius($amount)
+  
+=vmargin($top, $bot: $top)
+  margin-top: $top
+  margin-bottom: $bot
+  
+// hmargin, vpadding, hpadding
+```
+
+---
+
+and of course, use them
+
+```css
+.example
+  +right()
+  +rounded(8px)
+  +vmargin(5px)
+  +hpadding(10px)
+```
+
+simplify css and enhance it
+
+---
+
+---
+
+> skip this part!!! the important list is after this!
+
+> awesome for open source
+
+
+> remember when you started with building web sites/apps (and what you do mostly do to evaluate them?)
+
+you open the site/app and click around, play with it
+and next,  yes -> View source
+
+---
+
+[and that is exactly what makes me mad about not being able to do it on desktop/mobile(ios/android) apps]
+
+that's why i love web technologies (html5/js etc) and even if we have a big elder brother that is very slow (yeah i'm talking about W3C)
+
+--- 
+
+I like standards, especially if they're easy, to give the possibility to anyone to create things, and maybe become more of a programmer or designer
+
+we have the ability to make, it's inside our human nature, we can make things that can change the world!!!
+
+---
+
+note:
+
+if you use compilers (especially html and css) make sure they output a good code
+or make your sources public (repository/put them in the same public directory and "link" to them with a comment <!-- --> // ) 
+
+
 ---
 
 h1. icons
@@ -325,7 +444,7 @@ rails
 &#x1F683;
 &#x1F684;
 
-&#x1F3A9; magic1
+&#x1F3A9; magic
 
 &#x1F3AF; target
 
@@ -348,14 +467,14 @@ rails
 &#x1F446; pregunta
 
 &#x1F449; point right
-&#x1F448;  point left
+&#x1F448; point left
 
 &#x1F44C; perfect
 &#x1F44D; thumbs up
 &#x1F44E; thumbs down
 &#x1F453; nerd
 
-&#x1F47D;  alien
+&#x1F47D; alien
 
 &#x1F48A; pill
 
@@ -370,7 +489,7 @@ rails
 
 &#x1F4C9; chart down
 
-&#x1F4CC;  pushpin
+&#x1F4CC; pushpin
 &#x1F4D4; notebook
 &#x1F4DD;
 
@@ -397,7 +516,7 @@ rails
 
 &#x1F422; turtle
 &#x1F407; rabbit
-&#x1F40E;  horse
+&#x1F40E; horse
 
 &#x1F19A; VS
 

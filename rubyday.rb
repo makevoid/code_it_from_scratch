@@ -19,7 +19,7 @@ end
 class Rubyday < Sinatra::Base
   include TextileSlides
   
-  set :public_dir, "."
+  # set :public_dir, "."
   
   set server: 'thin'
   
@@ -48,16 +48,16 @@ class Rubyday < Sinatra::Base
   end
   
   get "/" do
-    File.read "./index.html"
+    File.read "./public/index.html"
   end
   
   get "/presenter" do
-    File.read "./presenter.html"
+    File.read "./public/presenter.html"
   end
   
   get "/slides.json" do
     slides = parse_slides File.read "./slides.textile"
-    p slides
+    # p slides
     slides
   end
 end

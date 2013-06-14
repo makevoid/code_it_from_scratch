@@ -1,5 +1,22 @@
 rubydayit_2013_code_it_from_scratch_talk
 ========================================
 
-
 <http://cifs.mkvd.net>
+
+This presentation tool is coded from scratch :D
+
+The whole presentation is in textile (slides.textile) with some additions like code highlghting.
+
+It's a sinatra app, you can run it with:
+
+    rackup -p 3000
+    
+the presentation will be active at: <http://localhost:3000>    
+    
+and you have a presenter view (buttons) if you go to <http://localhost:3000/presenter>
+
+feel free to 
+- fork the repo 
+- clean slides.txt and pulic/main.css
+
+and roll your own presentation!

@@ -1,9 +1,11 @@
 
 h1. Code it from scratch
 
-RubyDay 2013
+<br><br><br><br>
 
-@makevoid
+_RubyDay 2013_
+
+*@makevoid*
 
 > notes:
 
@@ -208,15 +210,16 @@ for the next project consider:
 
 h3. coding it from scratch!
 
-[note: there will be some slides full of code, and links, so if you are interested you may follow along with this link ]
+_there will be some slides with code and links_
+
+_you may follow along here:_
 
 h1. "cifs.mkvd.net":http://cifs.mkvd.net
 
+
 ---
 
-solution:
-
-go back to ruby
+START small in:
 
 > start both from only basic ruby 
 
@@ -224,15 +227,11 @@ go back to ruby
 
 > at first do only the things you need the most, your app's core
 
-> only after consider integrating other's people code and libraries 
+> only after consider integrating other's people code and libraries
 
 ---
 
 START small in:
-
----
-
-START small in: EVERYTHING
 
 ---
 
@@ -254,7 +253,9 @@ START small in: EVERYTHING
 
 ---
 
-Ruby:
+Some examples: 
+
+h3. Ruby:
 
 h1. &#x1F4DD;
 
@@ -305,6 +306,7 @@ end
 in the rails router - so SOA! )
 
 > service oriented architecture
+
 
 ---
 
@@ -848,18 +850,17 @@ there are a lot of functions in stdlib, use them!
 ---
 
 
-cuuuustooooom foooormaaats!!!
+h4. cuuuustooooom foooormaaats!!!
 
 
-- "Saf":https://github.com/makevoid/saf
-
-- textile/markdown + extensions 
+- Textile/Markdown + extensions 
 
 [like github flavored markdown, they're just pre/post parsers] 
 
-- pre-parsed Sass for themed variables ... 
 
-( write code that writes code :) )
+_my 2 cents:_
+
+- "SAF - Simple Articles Format":https://github.com/makevoid/saf
 
 ---
 
@@ -1035,17 +1036,30 @@ h1. HTML / CSS (& Sass)
 
 CSS resets
 
+
 ---
 
 h1. HTML / CSS (& Sass)
 
 CSS resets
 
-don't use compass or html5 boilerplate (reset what you care about)
+don't use Compass or HTML5 boilerplates 
 
-compass > bourbon > custom mixins
+reset what you care about!
 
-> if you use *compass* drop to *bourbon* then drop to custom mixins 
+---
+
+h1. HTML / CSS (& Sass)
+
+CSS resets
+
+don't use Compass or HTML5 boilerplates 
+
+reset what you care about!
+
+"Compass":http://compass-style.org/ > "Bourbon":http://bourbon.io/ > *custom mixins*
+
+> if you use *Compass* drop to *Bourbon* then drop to custom mixins 
 
 finalize when you have to ship it, don't overoptimize prematurely!
 
@@ -1083,7 +1097,7 @@ img {
 
 ---
 
-h2. Sass, hands on:
+&#x1F44D;
 
 do layouts by yourself
 
@@ -1124,7 +1138,7 @@ box-sizing example:
 
 ```html
 <style>
-  body, html {
+  body {
     margin: 0;
   }
 
@@ -1175,81 +1189,14 @@ works only in IE8+
 
 ---
 
-hack CSS, create your own Sass mixins:
+h2. Sass, hands on:
 
-> SKIP to layouts
+_(less is very similar though)_
 
-```css
-=box_sizing
-  -moz-box-sizing: border-box
-  box-sizing: border-box
+> you can use Sass to write prefixed css
 
-=box
- +box_sizing
- float: left
-
-// you can go really crazy with that
-
-=left
-  float: left
-  
-=right
-  float: right
-  
-=center
-  margin: 0 auto
-    
-=center_text
-  text-align: center
-```
-  
----  
-  
-center with IE support 
-
-```css  
-=center
-  margin: 0 auto
-  text-align: center
-  *
-    text-align: center
-```
 
 ---
-
-```css
-=hidden
-  display: none
-
-=bg($bg) // why bg? because background is too long/hard to type ^^
-  background: $bg
-
-=rounded($amount)
-  +border_radius($amount)
-  
-=vmargin($top, $bot: $top)
-  margin-top: $top
-  margin-bottom: $bot
-  
-// hmargin, vpadding, hpadding
-```
-
----
-
-and of course, use them
-
-```css
-.example
-  +right()
-  +rounded(8px)
-  +vmargin(5px)
-  +hpadding(10px)
-```
-
-simplify css and enhance it
-
----
-
 
 
 use Sass/Less/etc variables and operations:
@@ -1509,45 +1456,15 @@ this means also:
 
 h4. make your html/css easy to read
 
----
-
-> skip this part!!! the important list is after this!
-
-> awesome for open source
-
-
-> remember when you started with building web sites/apps (and what you do mostly do to evaluate them?)
-
-you open the site/app and click around, play with it
-and next,  yes -> View source
-
----
-
-[and that is exactly what makes me mad about not being able to do it on desktop/mobile(ios/android) apps]
-
-that's why i love web technologies (html5/js etc) and even if we have a big elder brother that is very slow (yeah i'm talking about W3C)
-
---- 
-
-I like standards, especially if they're easy, to give the possibility to anyone to create things, and maybe become more of a programmer or designer
-
-we have the ability to make, it's inside our human nature, we can make things that can change the world!!!
-
----
-
-note:
-
-if you use compilers (especially html and css) make sure they output a good code
-or make your sources public (repository/put them in the same public directory and "link" to them with a comment <!-- --> // ) 
+if it's small and modular, it will be easier
 
 
 ---
 
 prefer:
 
-- router/controllers
+- rails router over controllers
  - sinatra over rails
- - router over controller 
   - mount rack apps directly on router
  - catchall controller
  - api controller / no need for full ActionController (yeah, more metal &#127928; &#9835; , more speed)
