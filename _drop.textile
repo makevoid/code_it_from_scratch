@@ -4,6 +4,196 @@ commit messages:
 be creative! implemented x because it's awesome
 fixing again, it's the 100th time, i think it's time to change y
 
+
+
+---
+
+h1. _
+
+*underscore.js* is very cool because it adds to js a lot of useful functions that make it more like ruby!
+
+*Array* [Enumberables] (each, map, count, sum ...)
+String (...)
+Function (throttle, once...)
+
+
+
+BUT: dont use it like shown in the examples :D
+
+---
+
+```javascript
+_([array]).map, function(){
+  // ...
+})
+```
+
+not
+
+```javascript
+_.map([array], function(){
+  // ...  
+})
+```
+
+:)
+
+because so you can refactor as
+
+```javascript
+var array = _([array])
+```
+
+---
+
+and you can do
+
+```javascript
+array.map(function(){
+  // ...
+})
+```
+
+---
+
+and you can do
+
+```javascript
+array.map(function(elem, idx){
+  // ...
+})
+```
+
+---
+
+and you can do
+
+```javascript
+array.map(function(elem, idx){
+  // ...
+})
+```
+
+it feels more like ruby!
+
+---
+
+a complete area of your brain makes analysis, your prefrontal cortex, then you have a creative part, located on the back sides of your head  
+
+there is a cost in switching between analytic and creative (intuition) mode, you should should maximize the two phases, I think
+
+so, again, code it from the fucking scratch
+
+
+---   
+  
+in JS don't use ; they are optional! 
+
+except when you use the wrapping namespace:
+
+```javascript
+(function(){ });
+```
+
+make JS easier to read/write
+
+if you really have to, use zepto instead of jquery - if you don't plan to support IE8, especially on mobile devices
+
+--- 
+
+a bit basic
+
+
+h1. ruby
+
+
+
+use net http from scratch
+[example]
+
+```ruby
+example = Net::HTTP.get_response "http://example.com"
+puts example #=> "example!"
+```
+
+> CAN SKIP THIS
+
+> always run it and see the output!
+
+---
+
+```ruby
+def get_example
+  Net::HTTP.get_response "http://example.com"
+end
+
+get_example()
+```
+
+---
+
+
+in a class:
+
+
+```ruby
+class Antani
+  # long list of methods
+
+  def get_example
+    Net::HTTP.get_response "http://example.com"
+  end
+
+  def parse_example
+    example = get_example
+    example.gsub(/example/, 'EXAMPLE') 
+  end
+end
+```
+
+
+---
+
+or:
+
+```ruby
+class Antani
+  # long list of methods
+
+  def get_example
+    @example = Net::HTTP.get_response "http://example.com"
+  end
+
+  def parse_example
+     @example.gsub(/example/, 'EXAMPLE') 
+  end
+end
+```
+
+---
+
+```ruby
+class Antani
+
+  include Example
+
+
+module Example
+
+  def get_example
+    # ...
+
+  def parse example
+    # ....
+```
+
+(pseudo code)
+-----
+
+a bit basic ENDS
+
+
+
 ---
 
 [parallel but not the best fit]

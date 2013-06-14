@@ -5,9 +5,15 @@ RubyDay 2013
 
 @makevoid
 
+> notes:
 
-> notes: create wifi, connect ipad and test buttons/notes
-> deactivate moz fb plugin, put in fullscreen, open display preferences, close every other software, open quicktime and start recording (file > new screen recording)
+>  create wifi, connect ipad and test buttons/notes
+
+> deactivate moz fb plugin, put in fullscreen, open display preferences, close every other software, open quicktime and start recording (file 
+
+> new screen recording)
+
+> 1200x900
 
 ---
 
@@ -20,8 +26,7 @@ Ruby developer
 
 Recently discovered 3D printing!
 
-> Lately I'm becoming interested in 3d printing (code that become real things), but I'm a newbie, so If you know a lot about that, come and talk to me
-
+> Lately I'm becoming interested in 3d printing (code that become real things), but I'm a newbie, so If you know a lot about that, come and talk to me 
 
 ---
 
@@ -49,8 +54,7 @@ $ rails new appname
 
 > or... have you ever seen this?
 
-[bg black]
-[colour green]
+> } terminal
 
 ---
 
@@ -58,7 +62,8 @@ $ rails new appname
 $ rake test
 ```
 
-[terminal]
+> [terminal]
+
 ---
 
 ```bash
@@ -66,7 +71,7 @@ $ rake test
 ..
 ```
 
-[terminal]
+> [terminal]
 ---
 
 ```bash
@@ -74,7 +79,7 @@ $ rake test
 .....
 ```
 
-[terminal]
+> [terminal]
 ---
 
 ```bash
@@ -82,7 +87,7 @@ $ rake test
 .........
 ```
 
-[terminal]
+> [terminal]
 ---
 
 ```bash
@@ -92,7 +97,8 @@ $ rake test
 
 
 > or maybe you started a fresh app:
-[terminal]
+
+> [terminal]
 ---
 
 (freshly created app)
@@ -167,9 +173,8 @@ h1. Coding it from scratch!
 
 ---
 
-] problems:
 
-- when you are starting, the less you have the better!
+- when you are starting to code something, the less you have the better!
 - library you require and their dependencies are code that you don't control directly
   - it can be complex
   - can have bugs
@@ -185,9 +190,27 @@ Did you...
 - hit bugs in the library x and realized it's gazillion lines of long messy code?
 - spent more time in searching documentation than 
 
-so for the next project consider coding it from scratch!
+so...
 
-[note: there will be some slides full of code, and links, so if you are interested you may follow along with bit.ly/codeifs ]  
+---
+
+for the next project consider:
+
+---
+
+for the next project consider:
+
+h3. coding it from scratch!
+
+---
+
+for the next project consider:
+
+h3. coding it from scratch!
+
+[note: there will be some slides full of code, and links, so if you are interested you may follow along with this link ]
+
+h1. "cifs.mkvd.net":http://cifs.mkvd.net
 
 ---
 
@@ -233,7 +256,7 @@ START small in: EVERYTHING
 
 Ruby:
 
-&#x1F4DD;
+h1. &#x1F4DD;
 
 > in ruby:
 
@@ -257,11 +280,11 @@ h2. sinatra
 
 ---
 
-&#9995;
-
 > don't do this:
 
 and even in sinatra:
+
+&#9995;
 
 ```ruby
 class Post < ActiveRecord::Base
@@ -275,9 +298,11 @@ end
 ---
 
 - start from sinatra 
+
 - transition into rails if you need
 
-(you can always mount a rack app (like sinatra) in the rails router - SOA )
+( you can always mount a rack app [like sinatra] 
+in the rails router - so SOA! )
 
 > service oriented architecture
 
@@ -424,48 +449,48 @@ what is "in memory" in ruby??
 
 ---
 
-what is memory in ruby??
+what is "in memory"  in ruby??
 
 (a "variable"!)
 
 ---
 
-what is memory in ruby??
+what is "in memory"  in ruby??
 
-a @@class_variable!
-
----
-
-what is memory in ruby??
-
-a @@class_variable!
-
-a CONSTANT!
+a *@@class_variable*!
 
 ---
 
-what you need:
+what is "in memory" in ruby??
+
+a *@@class_variable*!
+
+a *CONSTANT*!
 
 ---
 
 what you need:
 
-good seed datas
+---
+
+what you need:
+
+h3. good seed datas
 
 > most of the times
+
 > you need just good seed datas
 
 
 ---
 
-scale later
+h2. scale later
 
 > you can always scale later to a more production-ready solution, but your development time and process is the key
 
 ---
 
-data is code, code is data
-
+h3. data is code, code is data
 
 ---
 
@@ -473,7 +498,7 @@ data is code, code is data
 data > write to file
 
 ```ruby
-objects = [{}, {}]
+objects = [{ }, { }]
 
 File.open("./db/data.rb", "w") do |f|
   f.write objects
@@ -498,25 +523,37 @@ puts objects #=> [{}, {}]
 ---
 
 
-you can dynamically load datas and modify your objects with few lines
+you can dynamically load datas and modify your objects
+   
 
-attr_accessor and instance_variable_set are your friends!
+*attr_accessor* 
+
+*instance_variable_set* 
+
+are your friends!
 
 ---
+
+choice:
 
 ]]]]]] SKIP TO CODE RELOADING
 
 ]]]]]] CONTINUE WITH RUBY EXAMPLES
 
+]] blizz follows
+
 
 ---
 
 ```ruby
+# for every key in your hash
 key = :antani
+val = "sblinda"
 instance_variable_set "@#{key}", val
 
-# at class level
+# and to access them easily
 attr_accessor key
+# (need to do it at class level)
 ```
 
 ---
@@ -530,31 +567,27 @@ def self.included(mod)
 end
 
 module ClassMethods
-  def create_accessor(name)
-    attr_accessor name
+  def create_accessors(hash)
+    attr_accessor *hash.keys
   end
 end
 ```
 
+---
 
 without method missing
 without instance/class eval
 
-those are not very clear to debug, isn't it?
-
+those are cool but not very clear to debug, isn't it?
 
 ---
 
 ```ruby
 class Page
-  def self.create_accessors(hash)
-    attr_accessor *hash.keys
-  end
 
   def self.load(hash)
     page = Page.new
     page.load hash
-    page.classify_contents
     page
   end
 
@@ -570,6 +603,7 @@ class Page
       instance_variable_set "@#{key}", val
     end
   end
+  
 end
 ```
 
@@ -589,9 +623,12 @@ then of course you can use it
 hash = { title: "test", contents: "bla" }
 page = Page.load hash
 
+# accessors are created for you
 page.title #=> "test"
 page.contents #=> "bla"
 ```    
+    
+---    
     
 > test
     
@@ -632,94 +669,16 @@ then you want to use activerecord? easy, your external api looks already like th
   
 ---
   
+  
 or use ActiveModel?
-or YAML::Store (stdlib),
-PStore (stdlib),
-Virtus (datamapper2/ROM)
-
----
-
-
-h1. ruby
-
-use net http from scratch
-[example]
-
-```ruby
-example = Net::HTTP.get_response "http://example.com"
-puts example #=> "example!"
-```
-
-> always run it and see the output!
-
----
-
-```ruby
-def get_example
-  Net::HTTP.get_response "http://example.com"
-end
-
-get_example()
-```
-
----
+or "YAML::Store":http://www.ruby-doc.org/stdlib-2.0/libdoc/yaml/rdoc/YAML/Store.html / "PStore":http://www.ruby-doc.org/stdlib-2.0/libdoc/pstore/rdoc/PStore.html (both in stdlib),
+"Virtus":https://github.com/solnic/virtus (made for "DataMapper2, now ROM":http://rom-rb.org/),
+or "ActiveRecord without Rails":http://blog.aizatto.com/2007/05/21/activerecord-without-rails/,
+or "DataMapper":http://datamapper.org (v1)
 
 
-in a class:
+> next: autoload 
 
-
-```ruby
-class Antani
-  # long list of methods
-
-  def get_example
-    Net::HTTP.get_response "http://example.com"
-  end
-
-  def parse_example
-    example = get_example
-    example.gsub(/example/, 'EXAMPLE') 
-  end
-end
-```
-
-
----
-
-or:
-
-```ruby
-class Antani
-  # long list of methods
-
-  def get_example
-    @example = Net::HTTP.get_response "http://example.com"
-  end
-
-  def parse_example
-     @example.gsub(/example/, 'EXAMPLE') 
-  end
-end
-```
-
----
-
-```ruby
-class Antani
-
-  include Example
-
-
-module Example
-
-  def get_example
-    # ...
-
-  def parse example
-    # ....
-```
-
-(pseudo code)
 
 ---
 
@@ -729,7 +688,9 @@ you don't have autoload / autoreload
 
 ---
 
-simple autoload -> require + Dir.glob
+the fact is you don't need autoload
+
+simply use require + Dir.glob
 
 ```ruby
 def require_all(dir)
@@ -740,6 +701,22 @@ end
 
 require_all "models"
 ```
+
+---
+
+then in your models, if some model requires another you have to manually require them
+
+
+```ruby
+require_relative "a"
+
+model B
+  def foo
+    A.bar
+  end
+end
+```
+
 
 ---
 
@@ -755,12 +732,17 @@ guard-reload [link]
 
 > your integration tests will be automatically slow because they will require your environment
 
-hotkeys (osx / linux)
-- fastscripts
-- gnome-???? forgot the name
+
+> hotkeys
+
+> - fastscripts (osx)
+
+> - gnome-???? forgot the name
 
 
 ---
+
+> SKIP IT?
 
 use pseudo-code
 
@@ -835,16 +817,22 @@ email_ip
 require 'net/http'
 
 def get_ip
-  
+  Net:HTTP.get_response "http://icanhazip.com"
+end
+
+def mail_me_ip(ip)
+  # ...
 end
 ```
+
+etc...
 
 > implement them 
 
 ---
 
 
-- models / DDD
+h2. models / DDD
 
 
 > ruby part:
@@ -852,7 +840,6 @@ end
 > models: stated before
 
 
-> diobubu?
 
 ---
 
@@ -863,77 +850,171 @@ there are a lot of functions in stdlib, use them!
 
 cuuuustooooom foooormaaats!!!
 
-(saf, textile/markdown + extensions [github flavored markdown, it's just a pre/post parser] , pre-parsed sass for themed variables ..., write code that writes code :) )
 
-textile/markdown are meant to be used in static, easily editable, files, many blogging engines like jekyll or static sites generator use markdown/textile
+- "Saf":https://github.com/makevoid/saf
 
-if you are building a cms or you let user input some 
+- textile/markdown + extensions 
 
-[youtube_ID] -> <object>youtube embed</object>
-[vimeo_ID] -> <object>youtube embed</object>
+[like github flavored markdown, they're just pre/post parsers] 
 
-[audio_ID] -> <audio></audio>
+- pre-parsed Sass for themed variables ... 
+
+( write code that writes code :) )
+
+---
+
+textile/markdown are meant to be used in static, easily editable files
+
+many blogging engines like jekyll or static sites generator use markdown/textile
+
+if you are building a cms or you let user input some content prefer those over WYSIWIG editors (like TinyMCE)
+
+---
+
+```html
 [image_ID] -> <img src="./path/to/imgs/ID.png" />
+[audio_ID] -> <audio src="./path/to/audios/ID.mp3"></audio>
+
+[youtube_ID] -> <object>youtube embed ID...</object>
+[vimeo_ID] -> <object>vimeo embed ID...</object>
 
 [....] -> 
+```
 
 simple regexes
 
+```ruby
 /\[youtube_(.+)\]/
 
 /\[image_(\d+)\]/
+```
 
-
+use ruby match / gsub
 
 ---
 
 
-IMPORTANT
+h1. Env file
 
 think about having an env file
 
-require './env'
+---
 
-to do `irb -r ./env.rb` and have your environment loaded (like script/console)
+
+h4. Env file
+
+] put in it all your dependencies and models requirements
+
+*env.rb* - ex. with bundler:
+
+```ruby
+require 'bundler/setup'
+Bundler.require :default
+
+# require your models
+
+# load seeds here
+# and/or connect to your db(s)
+```
+
 
 ---
 
+so in your *app.rb* you can do:
+
+```ruby
+require './env'
+```
+
+and have your gems, models, etc. loaded
+
+---
+
+h4. plus
+
+that way you can do:
+
+```bash
+irb -r ./env.rb
+```
+
+and have your environment loaded (like rails console)
+
+
+---
+
+```bash
+$ irb -r ./env.rb
+> 
+```
+
+---
+
+```bash
+$ irb -r ./env.rb
+> Model.all #=> [{...}, {...}] 
+```
+
+---
+
+h3. How to require
+
 look at different requiring mechanisms
 
-require "file" # standard, you don't have to change it from gem
+```ruby
+require "file" # standard for gems
 require "./file" 
 require_relative "file"
+```
 
-append to $LOAD_PATH # i don't like a lot this approach
+otherwise:
+append to *$LOAD_PATH*
+_(I don't suggest this approach)_
 
-# my favourite
 
+---
+
+my favourite:
+
+```ruby
 path = File.expand_path "../", __FILE__
 require "#{path}/file"
+```
 
+---
 
-# main class
+main app class:
 
+```ruby
 class App
   @@path = File.expand_path "../", __FILE__
+  
+  def self.path
+    @@path
+  end
 end
+```
 
+then you can call *App.path* like *Rails.root*
 
-# where there's "../" you will put your root project dir level
+_(where there's "../" you will put your root project dir level)_
 
 ---
 
 example: 
 
+```bash
 app dir /
   |
   -- app.rb
   -- ..
+```
 
-# in app.rb it will be "../"
+the path will be "../"
 
 ---
 
+```bash
 app dir /
   |
   -- lib/
@@ -941,22 +1022,26 @@ app dir /
       -- app.rb
       -- ..
   -- ..
+```
 
-# in app.rb it will be "../../", etc...
+the path will be "../../", etc...
 
+
+next....
 
 ---
 
-h1. CSS / SASS
+h1. HTML / CSS (& Sass)
 
+CSS resets
 
-# SASS
+---
 
-css resets
+h1. HTML / CSS (& Sass)
 
+CSS resets
 
 don't use compass or html5 boilerplate (reset what you care about)
-
 
 compass > bourbon > custom mixins
 
@@ -998,13 +1083,15 @@ img {
 
 ---
 
-SASS hands on:
+h2. Sass, hands on:
 
 do layouts by yourself
 
 don't use css frameworks / grid systems / boilerplates
 
-use box-sizing for layouts
+---
+
+use *box-sizing* for layouts
 
 ```css
 box-sizing: border-box
@@ -1013,7 +1100,7 @@ box-sizing: border-box
 it allows you to think about the content width without too many calculations
 you can mix fluid (%/em) widths and fixed paddings (in px) 
 
-[your playground it's always ready]
+_your playground it's always ready!_
 
 ---
 
@@ -1029,11 +1116,11 @@ you can mix fluid (%/em) widths and fixed paddings (in px)
 <div>this is a valid html page</div>
 ```
 
+> of course later you may want to add html and body tags
 
 ---
 
 box-sizing example:
-
 
 ```html
 <style>
@@ -1088,8 +1175,9 @@ works only in IE8+
 
 ---
 
-hack CSS, create your own SASS mixins:
+hack CSS, create your own Sass mixins:
 
+> SKIP to layouts
 
 ```css
 =box_sizing
@@ -1100,7 +1188,7 @@ hack CSS, create your own SASS mixins:
  +box_sizing
  float: left
 
-you can go really crazy with that
+// you can go really crazy with that
 
 =left
   float: left
@@ -1113,15 +1201,23 @@ you can go really crazy with that
     
 =center_text
   text-align: center
+```
   
-# legacy browser support center
+---  
   
+center with IE support 
+
+```css  
 =center
   margin: 0 auto
   text-align: center
   *
     text-align: center
+```
 
+---
+
+```css
 =hidden
   display: none
 
@@ -1140,14 +1236,28 @@ you can go really crazy with that
 
 ---
 
+and of course, use them
+
+```css
+.example
+  +right()
+  +rounded(8px)
+  +vmargin(5px)
+  +hpadding(10px)
+```
+
+simplify css and enhance it
+
+---
 
 
-use SASS/Less/etc variables and operations:
+
+use Sass/Less/etc variables and operations:
 
 for layout:
 
 ```sass
-# SASS example
+# Sass example
 
 $main: 80%
 $side: 2%
@@ -1198,18 +1308,20 @@ body
 a
   color: $main_color
 a:hover
-  color: $main_color + #222 // makes the links brigher on hover
+  color: $main_color + #222 
+  // makes the links brigher on hover
   
 .content
-  background: $bg_color - #222 // makes the bg darker
+  background: $bg_color - #222 
+  // makes it darker
 ```
 
 ---
 
 
 ```css
-$main_color: #00A
-$bg_color: #EFE
+$main_color: #0A0  // green
+$bg_color: #EFE    // light green
 ```
 
 > and if you change the variables, you change the colors! here's your theme generator
@@ -1231,25 +1343,25 @@ alpha()
 "more":http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
 
 
-
 ---
 
 Ruby developers
-focus a lot on backends and
-focus less on frontend [we forget that html/css/js (for ux elements) is also programming, especially when css preprocessors are involved]
+focus a lot on backends
+focus less on frontend 
+
+[we forget that html/css is also programming, especially when css preprocessors are involved]
 
 ---
 
 Do it yourself, you'll save time in the end:
 
-Sinatra over Rails
-SASS over Compass
-JS over JQuery Plugins
+- Sinatra over Rails
+- Sass over Compass
+- plain JS over JQuery and plugins
 
 If you code something, from the ground up, you are sure that you do it based on what you need.
 
 But! It will take more time, sure :D
-
 
 ---
 
@@ -1262,11 +1374,7 @@ build your own:
   - infinite page scrolling
   - manage history state (push/pop)State yourself
   - please don't use pjax / fast-rails-hack-ajax-speed-reload-antani?
-  - 
-  
-also don't use ; they are optional! (except when you use the wrapping namespace () ) - (function(){ }) 
-
-use zepto instead of jquery - if you don't plan to support ie 8
+    - do ajax call yourself, use history api, so you can use it for the content part
 
 ---
 
@@ -1371,79 +1479,35 @@ img.data.id  // ?
 img.dataSet.id
 ```
 
-oh but if you use jquery you need  ("") 
+> hmmm :D
 
 
-----
+---
 
-also for classes (addClass/reomveClass)
-and for appending/prepending to the dom
-innerHTML += / insertBefore / appendElement
+also for classes (*addClass/removeClass*)
 
+and for appending/prepending to the dom:
+*innerHTML += / insertBefore / appendElement*
 
 > // prototyping // dealing with change // "lean" // "agile" // insert buzzword here! // from a fucking blank editor!  you know?  
-img.dataset.id
 
 
-other examples: 
-http://www.leebrimelow.com/native-methods-jquery/
+"see other examples":http://www.leebrimelow.com/native-methods-jquery/
 
 
 ---
 
-underscore js
+h4. make your code easy to read
 
-underscore.js is very cool because it adds to js a lot of useful functions that make it more like ruby!
-
-Array [Enumberables] (each, map, count, sum ...)
-String (...)
-Function (throttle, once...)
-
-
-
-BUT: dont use it like shown in the examples :D
 
 ---
 
-```javascript
-_([array]).map ... -> ...
-```
+h4. make your code easy to read 
 
-not
+(in the frontend world) 
+this means also: 
 
-```javascript
-_.map([array], ->)
-```
-
-:)
-
-because so you can refactor as
-
-```javascript
-var array = _([array])
-```
-
----
-
-and you can do
-
-```javascript
-array.map(....
-```
-
----
-
-and you can do
-
-```javascript
-array.map(....
-```
-
-it feels more like ruby
-
----
-
-IMPORTANT: MAKE YOUR CODE EASY TO READ (in the frontend world) means also  MAKE YOUR HTML/CSS Easy to read
+h4. make your html/css easy to read
 
 ---
 
@@ -1479,6 +1543,8 @@ or make your sources public (repository/put them in the same public directory an
 
 ---
 
+prefer:
+
 - router/controllers
  - sinatra over rails
  - router over controller 
@@ -1499,6 +1565,7 @@ or make your sources public (repository/put them in the same public directory an
   - meta tags
   - js/css includes
   - HAML/Slim
+  -- partials over view helpers
 
 ---
   
@@ -1519,8 +1586,9 @@ to automate your workflow / coding sessions
 
 guard-coffeescript
 guard-sass
-guard-livereload
+guard-livereload (+ browser plugin)
 guard-concat
+guard-reload
   
 ---  
   
@@ -1540,17 +1608,25 @@ open it in your browser
 
 when you need to host it use something like
 
-python SimpleHTTP server
+```bash
+python -m SimpleHTTPServer 3000
+```
+
+---
 
 then maybe move to sinatra 
 
 then maybe move to rails (the total code weight will increase drastically in this phase &#x1F600; )
 
+> it starts a server that hosts your static files
+
 --- 
 
-then tear down some defaults (you usually don't need all actioncontroller 
+then tear down some defaults 
 
-also see one file rails app and one file rails app and the talk by jose - railsnatra http://www.confreaks.com/videos/2442-railsconf2013-you-ve-got-a-sinatra-on-your-rails )
+(you usually don't need all actioncontroller 
+
+also see these "single file":http://rkistner.github.io/ruby/2013/05/03/single-file-rails/ "rails app":https://gist.github.com/josevalim/1942658 and one file rails app and this talk by "Jose Valim":http://www.confreaks.com/videos/2442-railsconf2013-you-ve-got-a-sinatra-on-your-rails  )
 
 ---
 
@@ -1579,7 +1655,11 @@ find a talk about his library
 
 ---
 
-CIY (Code it Yourself)
+h1. CIY (Code it Yourself)
+
+---
+
+h1. CIY
 
 like DIY for things, if it's cheaper
 in the end you will learn something new
@@ -1587,8 +1667,12 @@ or if you already know those things (let's say you need a pagination library) yo
 to try a new TDD/BDD/etc way of coding
 to train yourself
 
+---
+
 [warning: I'm not saying that you should rebuild EVERYTHING, that could be "a little" time consuming :)]
 so don't rebuild rails if you need every part of it
+
+---
 
 instead, if you code something, and you see it's [simpler / solves the problem better / it has a feature that other libs don't / has a better api]
 release that code as a library
@@ -1609,18 +1693,14 @@ so, before you add x^n dependencies, consider to code it from a blank environmen
 
 ---
 
-important:
 
 coding from scratch keep your programmer memory fresh
-less cut n paste
-you need to produce
-more modular code
-more targeted code
 
-less: use this or that library, hammer 2-3 things here and there and go
-you are more forced to think about the problem and about the language / apis you have
-before using an external library think: do I really need it?
-doing this will I save time in the end?
+less cut n paste
+
+you need to produce:
+- more modular code
+- more targeted code
 
 ---
 
@@ -1636,16 +1716,8 @@ start from outside the onion
 ---
 >> it's seems fucking stupid but think about it
 
----
-
-a complete area of your brain makes analysis, your prefrontal cortex, then you have a creative part, located on the back sides of your head  
-
-there is a cost in switching between analytic and creative (intuition) mode, you should should maximize the two phases, I think
-
-so, again, code it from the fucking scratch
 
 ---
-
 
 reach the MVP (minimal viable product)
 MVD (minimal viable demo)
@@ -1662,27 +1734,12 @@ follow the "flow"
 
 ---
 
-code
-
-:: notes: these are presenter notes
-:: layout it's just a class
-
-[layout mini] 
-[font thaoma]
-[color red]
----
-
-Thanks!
-
-questions?
+h2. Thanks!
 
 ---
 
-Thanks!
-
-questions?
+h2. Thanks!
 
 
-rubies 3d printed @ LTE Studio 
 
-
+h3. Questions?

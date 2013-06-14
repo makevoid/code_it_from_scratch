@@ -4,13 +4,14 @@ var textism = function(string) {
 
   var parse_notes_and_styles = function(string) {
     var notes_regex1 = />&gt; (.+)/g
-    var notes_regex2 = />&gt; (.+)</g
+    // var notes_regex2 = /}&gt; (.+)</g
+    var text = string.replace(notes_regex1, '>')
     var text = string.replace(notes_regex1, '>')
     var notes
     if (match = />&gt; (.+)</g.exec(string)) {
       notes = match[1]
-      console.log(match[1])
-      console.log(match[2])
+      // console.log(match[1])
+      // console.log(match[2])
     }
     object = {}
     object.text = text
