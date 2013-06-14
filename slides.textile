@@ -167,39 +167,6 @@ WTF!!!
 
 ---
 
-...
-
-> have you ever saw something like that? if yes
-
-> for the next app think about...
-
----
-
-h1. Coding it from scratch!
-
----
-
-
-- when you are starting to code something, the less you have the better!
-- library you require and their dependencies are code that you don't control directly
-  - it can be complex
-  - can have bugs
-  - can slow your app down 
-  
----
-
-
-Did you...
-
-- wait for minutes for a test suite to finish
-- discovered a feature you need in library "x" is not implemented
-- hit bugs in the library x and realized it's gazillion lines of long messy code?
-- spent more time in searching documentation than 
-
-so...
-
----
-
 for the next project consider:
 
 ---
@@ -239,18 +206,21 @@ START small in:
 
 ---
 
-- Ruby
+h2. - Ruby
 
 ---
 
-- Ruby
-- HTML/CSS
+h2. - Ruby
+
+h2. - HTML/CSS
 
 ---
 
-- Ruby
-- HTML/CSS
-- JS
+h2. - Ruby
+
+h2. - HTML/CSS
+
+h2. - JS
 
 > this is only a 30min talk, I can't show you all the things but some examples of very small small starting points and going on after that
 
@@ -505,7 +475,8 @@ h3. read file > eval contents > data!
 
 
 ```ruby
-objects = File.read "./db/data.rb"
+data = File.read "./db/data.rb"
+objects = eval data
 
 puts objects #=> [{}, {}]
 ```
@@ -521,7 +492,7 @@ h3. data > write to file
 objects = [{ }, { }]
 
 File.open("./db/data.rb", "w") do |f|
-  f.write objects
+  f.write objects.to_s
 end
 ```
 
@@ -530,6 +501,13 @@ end
 
 ---
 
+h5. load your datas into your program
+
+<br><br>
+
+h3. make them objects!
+
+---
 
 you can dynamically load datas and modify your objects
    
@@ -587,13 +565,9 @@ those are cool but:
 
 ```ruby
 class Page
-
-  def self.load(hash)
-    page = Page.new
-    page.load hash
-    page
-  end
-
+  
+  # ...
+  
   def load(hash)
     Page.create_accessors hash
     load_contents hash
@@ -612,9 +586,11 @@ end
 
 ---
 
-available as a gem: "github/makevoid/blizz":https://github.com/makevoid/blizz
+available as a library: "github/makevoid/blizz":https://github.com/makevoid/blizz
 
-but as the code it's simple, I suggest coding it yourself personalizing it :) 
+but as the code it's simple
+
+I suggest coding it yourself personalizing it :) 
 
 ---
 
@@ -833,52 +809,6 @@ etc...
 > implement them 
 
 ---
-
-
-h4. cuuuustooooom foooormaaats!!!
-
-
-- Textile/Markdown + extensions 
-
-[like github flavored markdown, they're just pre/post parsers] 
-
-
-_my 2 cents:_
-
-- "SAF - Simple Articles Format":https://github.com/makevoid/saf
-
----
-
-textile/markdown are meant to be used in static, easily editable files
-
-many blogging engines like jekyll or static sites generator use markdown/textile
-
-if you are building a cms or you let user input some content prefer those over WYSIWIG editors (like TinyMCE)
-
----
-
-```html
-[image_ID] -> <img src="./path/to/imgs/ID.png" />
-[audio_ID] -> <audio src="./path/to/audios/ID.mp3"></audio>
-
-[youtube_ID] -> <object>youtube embed ID...</object>
-[vimeo_ID] -> <object>vimeo embed ID...</object>
-
-[....] -> 
-```
-
-simple regexes
-
-```ruby
-/\[youtube_(.+)\]/
-
-/\[image_(\d+)\]/
-```
-
-use ruby match / gsub
-
----
-
 
 h1. Env file
 
@@ -1331,8 +1261,8 @@ build your own:
   - autocomplete
   - infinite page scrolling
   - manage history state (push/pop)State yourself
-  - please don't use pjax / fast-rails-hack-ajax-speed-reload-antani?
-    - do ajax call yourself, use history api, so you can use it for the content part
+  - don't use pjax / turbolinks!
+  -- _do ajax call yourself, use history api, so you can use it for the content part_
 
 ---
 
@@ -1650,35 +1580,19 @@ you need to produce:
 - more modular code
 - more targeted code
 
----
-
-
-write method names you are going to implement
-
-BEFORE implementing them
-
----
-
-
-don't block impelementing a method and then using it
----
-start from outside the onion
-
-
----
-
-reach the MVP (minimal viable product)
-MVD (minimal viable demo)
-then iterate on that
-
-> say that to those LEAN guys
 
 ---
 
 prefer small iterations over big upfront overstructured designs
 
-follow the "flow"
+follow the *"flow"*
 
+
+---
+
+I was a bit extreme, but that was the title of my talk
+
+use existing *gems and libraries* some of them are really cool!
 
 ---
 

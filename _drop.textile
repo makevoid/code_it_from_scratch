@@ -1,4 +1,54 @@
 
+---
+
+
+h4. cuuuustooooom foooormaaats!!!
+
+
+- Textile/Markdown + extensions 
+
+[like github flavored markdown, they're just pre/post parsers] 
+
+
+_my 2 cents:_
+
+- "SAF - Simple Articles Format":https://github.com/makevoid/saf
+
+---
+
+textile/markdown are meant to be used in static, easily editable files
+
+many blogging engines like jekyll or static sites generator use markdown/textile
+
+if you are building a cms or you let user input some content prefer those over WYSIWIG editors (like TinyMCE)
+
+---
+
+```html
+[image_ID] -> <img src="./path/to/imgs/ID.png" />
+[audio_ID] -> <audio src="./path/to/audios/ID.mp3"></audio>
+
+[youtube_ID] -> <object>youtube embed ID...</object>
+[vimeo_ID] -> <object>vimeo embed ID...</object>
+
+[....] -> 
+```
+
+simple regexes
+
+```ruby
+/\[youtube_(.+)\]/
+
+/\[image_(\d+)\]/
+```
+
+use ruby match / gsub
+
+---
+
+
+---
+
 commit messages: 
 
 be creative! implemented x because it's awesome
