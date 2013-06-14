@@ -24,7 +24,7 @@ who am I?
 
 @makevoid
 
-Ruby developer
+Freelance ruby developer
 
 Recently discovered 3D printing!
 
@@ -32,7 +32,7 @@ Recently discovered 3D printing!
 
 ---
 
-IDEA &#128161;
+h3. IDEA &#128161;
 
 
 > you have an idea for an app
@@ -192,18 +192,6 @@ h1. "cifs.mkvd.net":http://cifs.mkvd.net
 
 START small in:
 
-> start both from only basic ruby 
-
-> or/and from the frontend, yes, i'm talking about a plain html file
-
-> at first do only the things you need the most, your app's core
-
-> only after consider integrating other's people code and libraries
-
----
-
-START small in:
-
 ---
 
 h2. - Ruby
@@ -338,7 +326,9 @@ post.title #=> "ruby"
 
 ---
 
-datas == array of hashes
+<br><br>
+
+h3. datas == array of hashes
 
 ---
 
@@ -460,11 +450,15 @@ h3. good seed datas
 
 ---
 
+<br><br>
+
 h2. scale later
 
 > you can always scale later to a more production-ready solution, but your development time and process is the key
 
 ---
+
+<br><br>
 
 h3. data is code, code is data
 
@@ -1105,6 +1099,8 @@ works only in IE8+
 
 ---
 
+<br>
+
 h2. Sass, hands on:
 
 _(less is very similar though)_
@@ -1431,6 +1427,8 @@ h3. view
 
 ---
 
+<br>
+
 h2. use Guard
 
 _or similar_  
@@ -1519,6 +1517,8 @@ when choosing a library, these things are important:
 
 ---
 
+<br><br>
+
 h1. CIY (Code it Yourself)
 
 ---
@@ -1532,6 +1532,8 @@ to try a new TDD/BDD/etc way of coding
 to train yourself
 
 ---
+
+<br>
 
 don't rebuild everything! &#9995;
 
@@ -1564,6 +1566,9 @@ If you code something, and you see it's
 
 ---
 
+
+<br><br>
+
 Sometimes it's not easy...
 
 ---
@@ -1590,18 +1595,26 @@ follow the *"flow"*
 
 ---
 
-I was a bit extreme, but that was the title of my talk
+I was a bit extreme, but that was the title of my talk!
 
-use existing *gems and libraries* some of them are really cool!
+*Use* existing *gems and libraries* 
+
+A *lot* of them are really *cool*!
 
 ---
+
+<br><br>
 
 h2. Thanks!
 
 ---
 
-h3. Thanks!
 
 <br><br><br>
 
 h1. Questions?
+
+
+<br><br>
+
+slides: "cifs.mkvd.net":http://cifs.mkvd.net

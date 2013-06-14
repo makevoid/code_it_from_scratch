@@ -49,8 +49,8 @@ em {
   bottom: 0;
   background: rgba(220, 220, 220, 0.5);
   padding: 5px;
-/*  display: none;*/
-  display: block;
+  display: none;
+/*  display: block; in dev */
   font-size: 0.7em;
 }
 
