@@ -726,9 +726,9 @@ autoreload
 
 ctrl+C + up arrow + enter &#x1F600;
 
-rerun [link]
+"Rerun":https://github.com/alexch/rerun
 
-guard-reload [link]
+"guard-relaunch":https://github.com/makevoid/guard-relaunch
 
 > if your [dev env/setup] is slow, you are developing at turtle speed &#x1F422;
 
@@ -1081,7 +1081,8 @@ body {
 
 ```css
 a {
-  text-decoration: none
+  text-decoration: none;
+  color: /* choose a color! */
 }
 ```
 
@@ -1466,46 +1467,63 @@ prefer:
 - rails router over controllers
  - sinatra over rails
   - mount rack apps directly on router
- - catchall controller
- - api controller / no need for full ActionController (yeah, more metal &#127928; &#9835; , more speed)
 
----
+- catchall controller
 
 - APIs
+
+for controllers that manage APIs, there's no need for full ActionController 
+
+_more metal &#127928; , more speed! &#x1F40E;_
+
  
 --- 
  
-- view
-  - pagination
-  - form helpers (basic version is easy, validation integration can be tricky, especially with i18n)
-  - link helpers
-  - meta tags
-  - js/css includes
-  - HAML/Slim
-  -- partials over view helpers
+h3. view
+
+- pagination
+- form helpers (basic version is easy, validation integration can be tricky, especially with i18n)
+- link helpers
+- meta tags
+- js/css includes
+- HAML/Slim
+-- partials over view helpers
 
 ---
-  
-- workflow automation (guard)
-  - compiling ( sass/less -> css,  coffee -> js )
-  - browser reloading
-  - concatenating
-  - minifying
-  (sprockets is slow isn't it? use guard [show guard-concat code])
-  
+
+h2. use Guard
+
+_or similar_  
+
+
 ---
 
+h3. Guard for 
+
+h3. workflow automation
+
+---
+
+h3. Guard for 
+
+- compiling ( sass/less -> css,  coffee -> js )
+- browser reloading
+- concatenating
+- minifying
+(sprockets is slow isn't it? use guard [show guard-concat code])
+  
+---
 
 use guard
 to automate your workflow / coding sessions
 
-[all guards available list] (github search)
+"guard-coffeescript":https://github.com/guard/guard-coffeescript
+"guard-sass":https://github.com/hawx/guard-sass
+"guard-livereload":https://github.com/guard/guard-livereload (+ "browser plugin":https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
+"guard-concat":https://github.com/makevoid/guard-concat
+"guard-relaunch":https://github.com/makevoid/guard-relaunch
 
-guard-coffeescript
-guard-sass
-guard-livereload (+ browser plugin)
-guard-concat
-guard-reload
+["more":https://github.com/guard]
   
 ---  
   
@@ -1547,28 +1565,16 @@ also see these "single file":http://rkistner.github.io/ruby/2013/05/03/single-fi
 
 ---
 
-when choosing a library
+when choosing a library, these things are important:
 
-some things are important:
+- size (number of lines) 
 
-size (number of lines) 
-code quality
-test coverage
-require time (something that most people ignore, this impacts both development and testing time)
+- code quality
 
----
+- test coverage
 
-I've gone / I'm pushing it  to the extreme just to see when it's useful and when it's not
+- require time (most people ignore it, but this impacts both development and testing time)
 
-see where is your limit
-
-try to go beyond that and to see if you benefit from it
-
-
-to see wich library/technology to try and how to try it
-
-search the library author name
-find a talk about his library
 
 ---
 
@@ -1586,32 +1592,46 @@ to train yourself
 
 ---
 
-[warning: I'm not saying that you should rebuild EVERYTHING, that could be "a little" time consuming :)]
+don't rebuild everything! &#9995;
+
 so don't rebuild rails if you need every part of it
+
+use it! 
 
 ---
 
-instead, if you code something, and you see it's [simpler / solves the problem better / it has a feature that other libs don't / has a better api]
-release that code as a library
+but...
+
+If you code something, and you see it's 
+
+- simpler 
+
+- solves the problem better 
+
+- it has a feature that other libs don't 
+
+- has a better API
+
+*release that code!*
+
+---
 
 - reuse it in other projects
 - let other people use it, open source it
 -- if people ask for features
 -- tell people to fork it and implement those themselves
 
+---
+
+Sometimes it's not easy...
 
 ---
 
-i'm not saying it's easy, especially with a big and "already running in production" project, but! you surely have another 
-
-so, before you add x^n dependencies, consider to code it from a blank environment
-
-
+but!
 
 ---
 
-
-coding from scratch keep your programmer memory fresh
+Coding from scratch keep your programmer memory fresh
 
 less cut n paste
 
@@ -1630,8 +1650,6 @@ write method names you are going to implement BEFORE implementing them
 don't block impelementing a method and then using it
 ---
 start from outside the onion
----
->> it's seems fucking stupid but think about it
 
 
 ---
@@ -1655,8 +1673,8 @@ h2. Thanks!
 
 ---
 
-h2. Thanks!
+h3. Thanks!
 
+<br><br><br>
 
-
-h3. Questions?
+h1. Questions?

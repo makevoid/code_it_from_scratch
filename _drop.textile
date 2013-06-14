@@ -421,6 +421,30 @@ or make your sources public (repository/put them in the same public directory an
 
 ---
 
+I've gone / I'm pushing it  to the extreme just to see when it's useful and when it's not
+
+see where is your limit
+
+try to go beyond that and to see if you benefit from it
+
+
+to see wich library/technology to try and how to try it
+
+search the library author name
+find a talk about his library
+---
+
+Sometimes it's not easy
+
+Especially with big "in production" projects
+
+
+i'm not saying it's easy, especially with a big and "already running in production" project, but! you surely have another 
+
+so, before you add x^n dependencies, consider to code it from a blank environment
+
+---
+
 h1. icons
 
 &#x1F30D; hello world
