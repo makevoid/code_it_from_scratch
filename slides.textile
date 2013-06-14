@@ -7,6 +7,8 @@ _RubyDay 2013_
 
 *@makevoid*
 
+"source":http://github.com/makevoid/code_it_from_scratch
+
 > notes:
 
 >  create wifi, connect ipad and test buttons/notes
@@ -1618,3 +1620,5 @@ h1. Questions?
 <br><br>
 
 slides: "cifs.mkvd.net":http://cifs.mkvd.net
+
+"source":http://github.com/makevoid/code_it_from_scratch
