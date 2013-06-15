@@ -1,7 +1,10 @@
-rubydayit_2013_code_it_from_scratch_talk
-========================================
+h1. Code it from scratch
 
-<http://cifs.mkvd.net>
+slides: <http://cifs.mkvd.net>
+
+
+---
+
 
 press n to deactivate presenter notes
 
